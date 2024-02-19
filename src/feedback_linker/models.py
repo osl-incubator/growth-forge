@@ -100,3 +100,5 @@ class Feedback(BaseModel):  # type: ignore[name-defined]
 def init_app(app) -> None:
     """Initialize app for the database."""
     db.init_app(app)
+    with app.app_context():
+        db.create_all()

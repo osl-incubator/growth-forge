@@ -25,6 +25,7 @@ from feedback_linker.models import (
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///feedback_linker.db'
+
 init_app(app)
 
 
@@ -86,5 +87,4 @@ def submit_feedback() -> str:
 
 
 if __name__ == '__main__':
-    db.create_all()
     app.run(debug=True)
