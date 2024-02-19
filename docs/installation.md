@@ -2,15 +2,14 @@
 
 ## Stable release
 
-To install Feedback Linker, run this command in your
-terminal:
+To install Feedback Linker, run this command in your terminal:
 
 ```bash
 $ pip install feedback-linker
 ```
 
-This is the preferred method to install Feedback Linker,
-as it will always install the most recent stable release.
+This is the preferred method to install Feedback Linker, as it will always
+install the most recent stable release.
 
 If you don't have [pip](https://pip.pypa.io) installed, this
 [Python installation guide](http://docs.python-guide.org/en/latest/starting/installation/)
@@ -18,8 +17,8 @@ can guide you through the process.
 
 ## From sources
 
-The sources for Feedback Linker can be downloaded from
-the [Github repo](https://github.com/xmnlab/feedback-linker.git).
+The sources for Feedback Linker can be downloaded from the
+[Github repo](https://github.com/xmnlab/feedback-linker.git).
 
 You can either clone the public repository:
 

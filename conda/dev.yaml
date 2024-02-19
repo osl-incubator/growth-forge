@@ -6,5 +6,5 @@ dependencies:
   - python >=3.8.1,<4
   - pip
   - poetry
-  - nodejs  # used by semantic-release
+  - nodejs # used by semantic-release
   - shellcheck
