@@ -18,6 +18,10 @@ python = ">=3.8.1,<4"
 flask = ">=3.0.2"
 flask-wtf = ">=1.2.1"
 email-validator = ">=2.1.0.post1"
+sqlalchemy = ">=2.0.27"
+flask-sqlalchemy = ">=3.1.1"
+types-wtforms = "^3.1.0.20240205"
+sqlalchemy-stubs = "^0.4"
 
 [tool.poetry.dev-dependencies]
 pytest = ">=7.3.2"
@@ -104,6 +108,18 @@ warn_unused_ignores = true
 warn_redundant_casts = true
 warn_unused_configs = true
 
+# [[tool.mypy.overrides]]
+# module = [
+#   "wtforms",
+# ]
+# ignore_missing_imports = true
+
+
 [[tool.mypy.overrides]]
-# module = []
-ignore_missing_imports = true
+module = "feedback_linker.models"
+ignore_errors = true
+
+
+[[tool.mypy.overrides]]
+module = "feedback_linker.forms"
+ignore_errors = true
