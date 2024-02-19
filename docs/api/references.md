@@ -1,3 +1,3 @@
 # Api references
 
-::: feedback_linker
+::: growth_plan_linker

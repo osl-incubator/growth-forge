@@ -1,6 +1,6 @@
 from django.urls import path
 
-from feedback_linker.users.views import (
+from growth_plan_linker.users.views import (
     user_detail_view,
     user_redirect_view,
     user_update_view,

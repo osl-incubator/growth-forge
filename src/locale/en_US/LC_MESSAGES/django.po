@@ -1,4 +1,4 @@
-# Translations for the Feedback-Linker project
+# Translations for the Growth-Plan-Linker project
 # Copyright (C) 2024 Ivan Ogasawara
 # Ivan Ogasawara <ivan.ogasawara@gmail.com>, 2024.
 #

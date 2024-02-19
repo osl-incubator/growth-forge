@@ -40,8 +40,8 @@ def update_site_forward(apps, schema_editor):
     _update_or_create_site_with_sequence(
         Site,
         schema_editor.connection,
-        "https://opensciencelabs.github.io/feedback-linker",
-        "Feedback-Linker",
+        "https://opensciencelabs.github.io/growth-plan-linker",
+        "Growth-Plan-Linker",
     )
 
 

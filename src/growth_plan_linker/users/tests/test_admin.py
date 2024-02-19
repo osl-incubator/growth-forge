@@ -11,7 +11,7 @@ from django.contrib.auth.models import AnonymousUser
 from django.urls import reverse
 from pytest_django.asserts import assertRedirects
 
-from feedback_linker.users.models import User
+from growth_plan_linker.users.models import User
 
 
 class TestUserAdmin:
@@ -51,7 +51,7 @@ class TestUserAdmin:
     def _force_allauth(self, settings) -> None:
         settings.DJANGO_ADMIN_FORCE_ALLAUTH = True
         # Reload the admin module to apply the setting change
-        import feedback_linker.users.admin as users_admin
+        import growth_plan_linker.users.admin as users_admin
 
         with contextlib.suppress(admin.sites.AlreadyRegistered):
             reload(users_admin)

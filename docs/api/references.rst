@@ -1,8 +1,8 @@
 API references
 ==============
 
-.. automodule:: feedback_linker
+.. automodule:: growth_plan_linker
     :members:
 
-.. automodule:: feedback_linker.feedback_linker
+.. automodule:: growth_plan_linker.growth_plan_linker
     :members:

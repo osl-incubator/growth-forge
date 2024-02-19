@@ -1,15 +1,15 @@
-# Feedback-Linker
+# Growth-Plan-Linker
 
-Feedback-Linker is a simplified feedback exchange platform designed to
+Growth-Plan-Linker is a simplified feedback exchange platform designed to
 facilitate periodic feedback between individuals within specific projects. It
 aims to streamline communication and insights sharing, enhancing project
 collaboration and personal development.
 
-- Documentation: <https://opensciencelabs.github.io/feedback-linker>
+- Documentation: <https://opensciencelabs.github.io/growth-plan-linker>
 
 ## Features
 
-Feedback-Linker includes several key features to manage feedback efficiently:
+Growth-Plan-Linker includes several key features to manage feedback efficiently:
 
 ### Projects
 
@@ -60,13 +60,13 @@ Feedback-Linker includes several key features to manage feedback efficiently:
 
 ## Contributing
 
-Feedback-Linker is open for contributions. Whether it's feature requests, bug
-reports, or code contributions, we welcome your input to make Feedback-Linker
+Growth-Plan-Linker is open for contributions. Whether it's feature requests, bug
+reports, or code contributions, we welcome your input to make Growth-Plan-Linker
 better. Please see our contributing guidelines for more information.
 
 ## License
 
-Feedback-Linker is licensed under the BSD 3-Clause License.
+Growth-Plan-Linker is licensed under the BSD 3-Clause License.
 
 ## Contact
 
@@ -74,5 +74,5 @@ For support or to get in touch with the developers, please open an issue.
 
 ---
 
-We hope Feedback-Linker enhances your project collaboration and personal
+We hope Growth-Plan-Linker enhances your project collaboration and personal
 development efforts!

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "feedback-linker"
+name = "growth-plan-linker"
 version = "0.1.0"  # semantic-release
 description = "The main objective of this platform is to offer a space to handle and organize feedback between two people"
 authors = ["Ivan Ogasawara <ivan.ogasawara@gmail.com>"]
@@ -8,7 +8,7 @@ exclude = [
   ".git/*",
   ".env*",
 ]
-include = ["src/feedback_linker/py.typed"]
+include = ["src/growth_plan_linker/py.typed"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4"
@@ -100,7 +100,7 @@ python_files = [
 
 # ==== Coverage ====
 [tool.coverage.run]
-include = ["src/feedback_linker/**"]
+include = ["src/growth_plan_linker/**"]
 omit = ["*/migrations/*", "*/tests/*"]
 plugins = ["django_coverage_plugin"]
 
@@ -114,7 +114,7 @@ ignore_missing_imports = true
 warn_unused_ignores = true
 warn_redundant_casts = true
 warn_unused_configs = true
-files = ["./src/feedback_linker"]
+files = ["./src/growth_plan_linker"]
 plugins = [
     "mypy_django_plugin.main",
     "mypy_drf_plugin.main",
@@ -131,7 +131,7 @@ strict_settings = false
 ignore_missing_model_attributes = true
 
 # [[tool.mypy.overrides]]
-# module = "feedback_linker.forms"
+# module = "growth_plan_linker.forms"
 # ignore_errors = true
 
 [[tool.mypy.overrides]]

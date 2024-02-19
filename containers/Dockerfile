@@ -3,9 +3,9 @@
 FROM condaforge/mambaforge:latest
 
 LABEL maintainer="Ivan Ogasawara <ivan.ogasawara@gmail.com>"
-LABEL org.opencontainers.image.title="Feedback Linker"
-LABEL org.opencontainers.image.authors="Feedback Linker Team"
-LABEL org.opencontainers.image.source="https://github.com/xmnlab/feedback-linker.git"
+LABEL org.opencontainers.image.title="Growth Plan Linker"
+LABEL org.opencontainers.image.authors="Growth Plan Linker Team"
+LABEL org.opencontainers.image.source="https://github.com/xmnlab/growth-plan-linker.git"
 LABEL org.opencontainers.image.version="latest"
 LABEL org.opencontainers.image.description="The main objective of this platform is to offer a space to handle and organize feedback between two people"
 
@@ -18,7 +18,7 @@ SHELL ["/bin/bash", "-c"]
 # executing commands with /bin/bash -c
 # Needed to have the micromamba activate command configured etc.
 
-ENV ENV_NAME=feedback_linker
+ENV ENV_NAME=growth_plan_linker
 ENV DEBIAN_FRONTEND=noninteractive
 ARG UID=1000
 ARG GID=1000
@@ -39,9 +39,9 @@ RUN apt-get update && \
         vim && \
     rm -rf /var/lib/apt/lists/*
 
-USER feedback_linker
+USER growth_plan_linker
 
-WORKDIR /feedback-linker
+WORKDIR /growth-plan-linker
 
 COPY pyproject.toml .
 
@@ -54,10 +54,10 @@ RUN mamba install -y poetry && \
     poetry install --no-dev --no-interaction --no-ansi
 
 
-COPY . /feedback-linker/
+COPY . /growth-plan-linker/
 
 COPY . .
 
 COPY compose.yaml .
 
-CMD ["python", "feedback_linker.py"]
+CMD ["python", "growth_plan_linker.py"]

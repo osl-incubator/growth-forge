@@ -3,8 +3,8 @@ import pytest
 
 from rest_framework.test import APIRequestFactory
 
-from feedback_linker.users.api.views import UserViewSet
-from feedback_linker.users.models import User
+from growth_plan_linker.users.api.views import UserViewSet
+from growth_plan_linker.users.models import User
 
 
 class TestUserViewSet:

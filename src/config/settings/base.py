@@ -6,8 +6,8 @@ from pathlib import Path
 import environ
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
-# feedback_linker/
-APPS_DIR = BASE_DIR / 'feedback_linker'
+# growth_plan_linker/
+APPS_DIR = BASE_DIR / 'growth_plan_linker'
 env = environ.Env()
 
 READ_DOT_ENV_FILE = env.bool('DJANGO_READ_DOT_ENV_FILE', default=False)
@@ -92,7 +92,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    'feedback_linker.users',
+    'growth_plan_linker.users',
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -101,7 +101,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {'sites': 'feedback_linker.contrib.sites.migrations'}
+MIGRATION_MODULES = {'sites': 'growth_plan_linker.contrib.sites.migrations'}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -201,7 +201,7 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
-                'feedback_linker.users.context_processors.allauth_settings',
+                'growth_plan_linker.users.context_processors.allauth_settings',
             ],
         },
     },
@@ -294,14 +294,16 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 # https://docs.allauth.org/en/latest/account/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 # https://docs.allauth.org/en/latest/account/configuration.html
-ACCOUNT_ADAPTER = 'feedback_linker.users.adapters.AccountAdapter'
+ACCOUNT_ADAPTER = 'growth_plan_linker.users.adapters.AccountAdapter'
 # https://docs.allauth.org/en/latest/account/forms.html
-ACCOUNT_FORMS = {'signup': 'feedback_linker.users.forms.UserSignupForm'}
+ACCOUNT_FORMS = {'signup': 'growth_plan_linker.users.forms.UserSignupForm'}
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
-SOCIALACCOUNT_ADAPTER = 'feedback_linker.users.adapters.SocialAccountAdapter'
+SOCIALACCOUNT_ADAPTER = (
+    'growth_plan_linker.users.adapters.SocialAccountAdapter'
+)
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
 SOCIALACCOUNT_FORMS = {
-    'signup': 'feedback_linker.users.forms.UserSocialSignupForm',
+    'signup': 'growth_plan_linker.users.forms.UserSocialSignupForm',
 }
 # django-compressor
 # ------------------------------------------------------------------------------
@@ -328,8 +330,8 @@ CORS_URLS_REGEX = r'^/api/.*$'
 # By Default swagger ui is available only to admin user(s). You can change permission classes to change that
 # See more configuration options at https://drf-spectacular.readthedocs.io/en/latest/settings.html#settings
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Feedback-Linker API',
-    'DESCRIPTION': 'Documentation of API endpoints of Feedback-Linker',
+    'TITLE': 'Growth-Plan-Linker API',
+    'DESCRIPTION': 'Documentation of API endpoints of Growth-Plan-Linker',
     'VERSION': '1.0.0',
     'SERVE_PERMISSIONS': ['rest_framework.permissions.IsAdminUser'],
 }

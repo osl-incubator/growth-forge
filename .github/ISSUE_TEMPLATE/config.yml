@@ -2,14 +2,14 @@
 blank_issues_enabled: true
 contact_links:
   - name: 🙋  Usage Questions
-    url: https://github.com/xmnlab/feedback-linker.git/discussions
+    url: https://github.com/xmnlab/growth-plan-linker.git/discussions
     about: |
-      Use Feedback Linker's GitHub Discussions to ask "How do I do X with Feedback Linker?".
+      Use Growth Plan Linker's GitHub Discussions to ask "How do I do X with Growth Plan Linker?".
   - name: 📖  Tutorial
-    url: https://github.com/xmnlab/feedback-linker.git
+    url: https://github.com/xmnlab/growth-plan-linker.git
     about: |
-      The Feedback Linker tutorial is continually updated and provides an in depth walkthrough
-      of how to use the latest release of Feedback Linker.
-  - name: 📝  Feedback Linker Code of Conduct
-    url: https://github.com/xmnlab/feedback-linker.git/coc/CODE_OF_CONDUCT.md
-    about: Expectations for how people will interact with each other on Feedback Linker's GitHub.
+      The Growth Plan Linker tutorial is continually updated and provides an in depth walkthrough
+      of how to use the latest release of Growth Plan Linker.
+  - name: 📝  Growth Plan Linker Code of Conduct
+    url: https://github.com/xmnlab/growth-plan-linker.git/coc/CODE_OF_CONDUCT.md
+    about: Expectations for how people will interact with each other on Growth Plan Linker's GitHub.

@@ -1,4 +1,4 @@
-from feedback_linker.users.models import User
+from growth_plan_linker.users.models import User
 
 
 def test_user_get_absolute_url(user: User):

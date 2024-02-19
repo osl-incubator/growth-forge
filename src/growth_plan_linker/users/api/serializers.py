@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from feedback_linker.users.models import User as UserType
+from growth_plan_linker.users.models import User as UserType
 
 User = get_user_model()
 

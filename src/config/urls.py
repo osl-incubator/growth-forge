@@ -23,7 +23,9 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
-    path('users/', include('feedback_linker.users.urls', namespace='users')),
+    path(
+        'users/', include('growth_plan_linker.users.urls', namespace='users')
+    ),
     path('accounts/', include('allauth.urls')),
     # Your stuff: custom urls includes go here
     # ...

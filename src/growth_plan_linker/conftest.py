@@ -1,7 +1,7 @@
 import pytest
 
-from feedback_linker.users.models import User
-from feedback_linker.users.tests.factories import UserFactory
+from growth_plan_linker.users.models import User
+from growth_plan_linker.users.tests.factories import UserFactory
 
 
 @pytest.fixture(autouse=True)

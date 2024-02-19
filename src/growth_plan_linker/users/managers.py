@@ -7,7 +7,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import UserManager as DjangoUserManager
 
 if TYPE_CHECKING:
-    from feedback_linker.users.models import User
+    from growth_plan_linker.users.models import User
 
 
 class UserManager(DjangoUserManager['User']):

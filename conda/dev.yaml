@@ -1,4 +1,4 @@
-name: feedback-linker
+name: growth-plan-linker
 channels:
   - nodefaults
   - conda-forge

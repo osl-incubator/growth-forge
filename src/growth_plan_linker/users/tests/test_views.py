@@ -13,10 +13,10 @@ from django.test import RequestFactory
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
-from feedback_linker.users.forms import UserAdminChangeForm
-from feedback_linker.users.models import User
-from feedback_linker.users.tests.factories import UserFactory
-from feedback_linker.users.views import (
+from growth_plan_linker.users.forms import UserAdminChangeForm
+from growth_plan_linker.users.models import User
+from growth_plan_linker.users.tests.factories import UserFactory
+from growth_plan_linker.users.views import (
     UserRedirectView,
     UserUpdateView,
     user_detail_view,

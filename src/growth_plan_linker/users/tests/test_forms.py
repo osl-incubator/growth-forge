@@ -2,8 +2,8 @@
 
 from django.utils.translation import gettext_lazy as _
 
-from feedback_linker.users.forms import UserAdminCreationForm
-from feedback_linker.users.models import User
+from growth_plan_linker.users.forms import UserAdminCreationForm
+from growth_plan_linker.users.models import User
 
 
 class TestUserAdminCreationForm:

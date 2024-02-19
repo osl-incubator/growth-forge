@@ -4,7 +4,7 @@ import django.utils.timezone
 from django.db import migrations
 from django.db import models
 
-import feedback_linker.users.models
+import growth_plan_linker.users.models
 
 
 class Migration(migrations.Migration):
@@ -106,7 +106,7 @@ class Migration(migrations.Migration):
                 "abstract": False,
             },
             managers=[
-                ("objects", feedback_linker.users.models.UserManager()),
+                ("objects", growth_plan_linker.users.models.UserManager()),
             ],
         ),
     ]

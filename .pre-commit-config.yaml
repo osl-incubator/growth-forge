@@ -82,7 +82,7 @@ repos:
         name: vulture
         entry: vulture --min-confidence 80
         language: system
-        files: "src/feedback-linker"
+        files: "src/growth-plan-linker"
         description: Find unused Python code.
         pass_filenames: true
         types:
@@ -92,7 +92,7 @@ repos:
         name: mccabe
         entry: python -m mccabe --min 10
         language: system
-        files: "src/feedback-linker"
+        files: "src/growth-plan-linker"
         pass_filenames: true
         types:
           - python
