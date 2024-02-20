@@ -29,12 +29,16 @@ jobs:
           miniforge-variant: Mambaforge
 
       - name: Install dependencies
-        run: |
-          poetry install
+        run: poetry install --only dev
+
+      - name: build containers image
+        run: sugar build
+
+      - name: Run migrations
+        run: makim django.makemigrations --check
 
       - name: Run tests
-        run: |
-          makim tests.unit
+        run: makim tests.unit
 
       - name: Run style checks
         run: |

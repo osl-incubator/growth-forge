@@ -44,17 +44,15 @@ LOCALE_PATHS = [str(BASE_DIR / 'locale')]
 
 # DATABASES
 # ------------------------------------------------------------------------------
-_DATABASES_DEFAULT = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite',
-        'OPTIONS': {
-            'timeout': 20,
-        },
-    }
-}
+DATABASE_URL = (
+    f'postgres://{env("POSTGRES_USER")}:'
+    f'{env("POSTGRES_PASSWORD")}@'
+    f'{env("POSTGRES_HOST")}:'
+    f'{env("POSTGRES_PORT")}/'
+    f'{env("POSTGRES_DBNAME")}'
+)
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-DATABASES = {'default': env.db('DATABASE_URL', default='sqlite:///db.sqlite')}
+DATABASES = {'default': env.db('DATABASE_URL', default=DATABASE_URL)}
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 # https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-DEFAULT_AUTO_FIELD
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -91,10 +89,7 @@ THIRD_PARTY_APPS = [
     'drf_spectacular',
 ]
 
-LOCAL_APPS = [
-    'growth_plan_linker.users',
-    # Your stuff: custom apps go here
-]
+LOCAL_APPS = ['growth_plan_linker.users', 'growth_plan_linker']
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 

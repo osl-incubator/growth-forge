@@ -44,18 +44,28 @@ groups:
           pre-commit run --all-files --verbose
 
       unit:
-        help: run tests
+        help: Run tests
         args:
-          path:
-            help: Specify the location of the tests
+          app:
+            help: The name of the app
+            type: string
+          module:
+            help: Specify the python module used for the test
+            type: string
+            default: ""
+          settings:
+            help: Specify the django settings module
             type: string
             default: ""
           params:
             help: Specify parameters to be used for tests
             type: string
-            default: "-vv"
+            default: "-v 3"
         run: |
-          pytest {{ args.path }} {{ args.params }}
+          CMD="python manage.py test --no-input {{ args.app or args.module }} \
+            --settings={{ args.settings or env.DJANGO_SETTINGS_MODULE }} {{ args.params }}"
+          sugar ext start --services postgres --options -d
+          sugar run --service literev --cmd $CMD
 
       ci:
         help: run the sames tests executed on CI
@@ -67,8 +77,7 @@ groups:
     targets:
       build:
         help: "Build the package"
-        run: |
-          poetry build
+        run: poetry build
 
   release:
     vars:
@@ -92,3 +101,39 @@ groups:
       dry:
         help: run semantic release in dry-run mode
         run: {{ vars.app }} --dry-run
+
+  django:
+    help: command for the django app
+    targets:
+      makemigrations:
+        help: Run django makemigrations command (just for development)
+        shell: bash
+        args:
+          check:
+            help: |
+              Just check if the latest migration files were already created.
+            type: bool
+            action: store_true
+        run: |
+          sugar ext start --services postgres --options -d
+
+          CWD=$(pwd)
+          CMD_FLAG="{{ '--check' if args.check else '' }} --no-input"
+
+          for app in 'sites' 'growth_plan_linker' ''; do
+            echo -e "\nMaking migration files for: '${app}' ...\n"
+            CMD="python manage.py makemigrations ${CMD_FLAG} ${app}"
+            sugar run --service app --cmd $CMD
+          done
+
+          echo "[II] postgres is running."
+
+      migrate:
+        help: Migrate regarding to the current migration files
+        shell: bash
+        run: |
+          sugar ext start --services postgres --options -d
+          echo "[II] postgres is running."
+
+          CMD="python manage.py migrate --no-input"
+          sugar run --service app --cmd $CMD
