@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  app:
+    hostname: growthplan-app
+    build:
+      context: ..
+      dockerfile: containers/app/Dockerfile
+      args:
+        ENV: ${ENV:-dev}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../src:/app
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-1kdis94id}
+      POSTGRES_HOST: ${POSTGRES_HOST:-growthplan-postgres}
+      POSTGRES_PORT: ${POSTGRES_HOST:-5432}
+      POSTGRES_DBNAME: ${POSTGRES_DBNAME:-postgres}
+      ENV: ${ENV:-dev}
+    depends_on:
+      - postgres
+
+  postgres:
+    hostname: growthplan-postgres
+    build:
+      context: ..
+      dockerfile: containers/postgres/Dockerfile
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-1kdis94id}
+      POSTGRES_HOST: ${POSTGRES_HOST:-growthplan-postgres}
+      POSTGRES_PORT: ${POSTGRES_HOST:-5432}
+    volumes:
+      - growthplandb:/var/lib/postgresql/data
+
+volumes:
+  growthplandb:

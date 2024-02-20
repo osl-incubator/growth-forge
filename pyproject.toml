@@ -1,0 +1,287 @@
+[tool.poetry]
+name = "growth-plan-linker"
+version = "0.1.0"  # semantic-release
+description = "The main objective of this platform is to offer a space to handle and organize feedback between two people"
+authors = ["Ivan Ogasawara <ivan.ogasawara@gmail.com>"]
+license = "BSD 3 Clause"
+exclude = [
+  ".git/*",
+  ".env*",
+]
+include = ["src/growth_plan_linker/py.typed"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4"
+python-slugify = ">=8.0.4"  # https://github.com/un33k/python-slugify
+Pillow = ">=10.2.0"  # https://github.com/python-pillow/Pillow
+rcssmin = ">=1.1.1"  # https://github.com/ndparker/rcssmin
+argon2-cffi = ">=23.1.0"  # https://github.com/hynek/argon2_cffi
+whitenoise = ">=6.6.0"  # https://github.com/evansd/whitenoise
+redis = ">=5.0.1"  # https://github.com/redis/redis-py
+hiredis = ">=2.3.2"  # https://github.com/redis/hiredis-py
+uvicorn = {version = ">=0.27.1", extras = ["standard"] }  # https://github.com/encode/uvicorn
+django = ">=5"  # https://www.djangoproject.com/
+django-environ = ">=0.11.2"  # https://github.com/joke2k/django-environ
+django-model-utils = ">=4.4.0"  # https://github.com/jazzband/django-model-utils
+django-allauth = ">=0.61.1"  # https://github.com/pennersr/django-allauth
+django-crispy-forms = ">=2.1"  # https://github.com/django-crispy-forms/django-crispy-forms
+django-anymail = ">=10.2"  # https://github.com/anymail/django-anymail
+crispy-bootstrap5 = ">=2023.10"  # https://github.com/django-crispy-forms/crispy-bootstrap5
+django-compressor = ">=4.4"  # https://github.com/django-compressor/django-compressor
+django-redis = ">=5.4.0"  # https://github.com/jazzband/django-redis
+djangorestframework = ">=3.14.0"  # https://github.com/encode/django-rest-framework
+django-cors-headers = ">=4.3.1"  # https://github.com/adamchainz/django-cors-headers
+drf-spectacular = ">=0.27.1"  # https://github.com/tfranzel/drf-spectacular
+gunicorn = ">=21.2.0"  # https://github.com/benoitc/gunicorn
+psycopg = {version = ">=3.1.18", extras = ["binary"]}  # https://github.com/psycopg/psycopg
+sentry-sdk = ">=1.40.4"  # https://github.com/getsentry/sentry-python
+
+
+[tool.poetry.dev-dependencies]
+pytest = ">=8.0"
+pytest-cov = ">=4.1.0"
+pre-commit = ">=3.3.2"
+ruff = ">=0.2.2"
+mypy = ">=1.7.0,<1.8"
+bandit = ">=1.7.5"
+vulture = ">=2.7"
+mccabe = ">=0.6.1"
+compose-go = ">=2.18.1"
+ipython = ">=8"
+ipykernel = ">=6.0.0"
+Jinja2 = ">=3.1.2"
+mkdocs = ">=1.4.3"
+mkdocs-exclude = ">=1.0.2"
+mkdocs-jupyter = ">=0.24.1"
+mkdocs-literate-nav = ">=0.6.0"
+mkdocs-macros-plugin = ">=0.7.0,<1"
+mkdocs-material = ">=9.1.15"
+mkdocstrings = ">=0.21.2"
+mkdocstrings-python = ">=1.1.2"
+makim = "1.13.0"
+containers-sugar = "1.11.1"
+Werkzeug = {version = ">=3.0.1", extras = ["watchdog"] } # https://github.com/pallets/werkzeug
+ipdb = ">=0.13.13"  # https://github.com/gotcha/ipdb
+watchfiles = ">=0.21.0"  # https://github.com/samuelcolvin/watchfiles
+django-stubs = {version = ">=4.2.7", extras = ["compatible-mypy"]}  # https://github.com/typeddjango/django-stubs
+pytest-sugar = ">=1.0.0"  # https://github.com/Frozenball/pytest-sugar
+djangorestframework-stubs = {version = ">=3.14.5", extras = ["compatible-mypy"]}  # https://github.com/typeddjango/djangorestframework-stubs
+coverage = ">=7.4.1"  # https://github.com/nedbat/coveragepy
+djlint = ">=1.34.1"  # https://github.com/Riverside-Healthcare/djLint
+factory-boy = ">=3.3.0"  # https://github.com/FactoryBoy/factory_boy
+django-debug-toolbar = ">=4.3.0"  # https://github.com/jazzband/django-debug-toolbar
+django-extensions = ">=3.2.3"  # https://github.com/django-extensions/django-extensions
+django-coverage-plugin = ">=3.1.0"  # https://github.com/nedbat/django_coverage_plugin
+pytest-django = ">=4.8.0"  # https://github.com/pytest-dev/pytest-django
+
+
+[tool.bandit]
+exclude_dirs = ["tests"]
+targets = "./"
+
+[tool.vulture]
+exclude = ["tests"]
+ignore_decorators = ["@abc.abstractmethod"]
+ignore_names = []
+make_whitelist = true
+min_confidence = 80
+paths = ["./"]
+sort_by_size = true
+verbose = false
+
+# ==== pytest ====
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--ds=config.settings.test --reuse-db"
+python_files = [
+    "tests.py",
+    "test_*.py",
+]
+
+# ==== Coverage ====
+[tool.coverage.run]
+include = ["src/growth_plan_linker/**"]
+omit = ["*/migrations/*", "*/tests/*"]
+plugins = ["django_coverage_plugin"]
+
+
+# ==== mypy ====
+[tool.mypy]
+python_version = "3.11"
+strict = true
+check_untyped_defs = true
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+files = ["./src/growth_plan_linker"]
+plugins = [
+    "mypy_django_plugin.main",
+    "mypy_drf_plugin.main",
+]
+
+[[tool.mypy.overrides]]
+# Django migrations should not produce any errors:
+module = "*.migrations.*"
+ignore_errors = true
+
+[tool.django-stubs]
+django_settings_module = "config.settings.test"
+strict_settings = false
+ignore_missing_model_attributes = true
+
+# [[tool.mypy.overrides]]
+# module = "growth_plan_linker.forms"
+# ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "NewSemanalDjangoPlugin"
+ignore_errors = true
+
+# ==== djLint ====
+[tool.djlint]
+blank_line_after_tag = "load,extends"
+close_void_tags = true
+format_css = true
+format_js = true
+# TODO: remove T002 when fixed https://github.com/Riverside-Healthcare/djLint/issues/687
+ignore = "H006,H030,H031,T002"
+include = "H017,H035"
+indent = 2
+max_line_length = 119
+profile = "django"
+
+[tool.djlint.css]
+indent_size = 2
+
+[tool.djlint.js]
+indent_size = 2
+
+
+[tool.ruff]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "*/migrations/*.py",
+    "staticfiles/*",
+    'docs',
+]
+# Same as Django: https://github.com/cookiecutter/cookiecutter-django/issues/4792.
+line-length = 79
+indent-width = 4
+target-version = "py38"
+force-exclude = true
+src = ["./"]
+fix = true
+
+
+[tool.ruff.lint]
+select = [
+  # "D",   # pydocstyle
+  "F",
+  "E",
+  "W",
+  "C90",
+  "I",
+  "I001", # isort
+  "N",
+  "UP",
+  "YTT",
+  # "ANN", # flake8-annotations: we should support this in the future but 100+ errors atm
+  "ASYNC",
+  "S",
+  "BLE",
+  # "FBT",
+  "B",
+  "A",
+  "COM",
+  "C4",
+  "DTZ",
+  "T10",
+  "DJ",
+  "EM",
+  "EXE",
+  "FA",
+  'ISC',
+  "ICN",
+  "G",
+  'INP',
+  'PIE',
+  "T20",
+  'PYI',
+  'PT',
+  "Q",
+  "RSE",
+  "RET",
+  "SLF",
+  "SLOT",
+  "SIM",
+  "TID",
+  "TCH",
+  "INT",
+  # "ARG", # Unused function argument
+  "PTH",
+  "ERA",
+  "PD",
+  # "PGH",
+  "PL",
+  "TRY",
+  "FLY",
+  # "NPY",
+  # "AIR",
+  "PERF",
+  # "FURB",
+  # "LOG",
+  "RUF"
+]
+ignore = [
+  "S101", # Use of assert detected https://docs.astral.sh/ruff/rules/assert/
+  "RUF012", # Mutable class attributes should be annotated with `typing.ClassVar`
+  "PLR0913",
+  "COM812",
+  "ISC001",
+]
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+
+[tool.ruff.format]
+quote-style = "single"
+indent-style = "space"
+# skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.isort]
+# Use a single line between direct and from import
+lines-between-types = 1
+
+[tool.ruff.lint.flake8-quotes]
+# docstring-quotes = "double"
+inline-quotes = "single"
+# multiline-quotes = "double"

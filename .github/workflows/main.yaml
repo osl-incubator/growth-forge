@@ -1,0 +1,48 @@
+name: main
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: ci-${{ github.ref }}
+      cancel-in-progress: true
+
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          environment-file: conda/dev.yaml
+          channels: conda-forge,nodefaults
+          activate-environment: growth-plan-linker
+          auto-update-conda: true
+          conda-solver: libmamba
+
+      - name: Install dependencies
+        run: poetry install --only dev
+
+      - name: build containers image
+        run: sugar build
+
+      - name: Run migrations
+        run: makim django.makemigrations --check
+
+      - name: Run tests
+        run: makim tests.unit
+
+      - name: Run style checks
+        run: |
+          pre-commit install
+          makim tests.linter
