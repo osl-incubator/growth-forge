@@ -61,6 +61,7 @@ groups:
             help: Specify parameters to be used for tests
             type: string
             default: "-v 3"
+        shell: bash
         run: |
           CMD="python manage.py test --no-input {{ args.app or args.module }} \
             --settings={{ args.settings or env.DJANGO_SETTINGS_MODULE }} {{ args.params }}"
