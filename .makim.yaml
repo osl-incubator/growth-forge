@@ -65,7 +65,7 @@ groups:
           CMD="python manage.py test --no-input {{ args.app or args.module }} \
             --settings={{ args.settings or env.DJANGO_SETTINGS_MODULE }} {{ args.params }}"
           sugar ext start --services postgres --options -d
-          sugar run --service literev --cmd $CMD
+          sugar run --service app --cmd $CMD
 
       ci:
         help: run the sames tests executed on CI
