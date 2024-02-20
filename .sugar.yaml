@@ -1,0 +1,15 @@
+version: 1.0
+compose-app: docker compose
+defaults:
+  group: dev
+  project-name: growthplan
+groups:
+  dev:
+    compose-path:
+      - containers/compose.base.yaml
+    # env-file: .env
+    services:
+      default: app,postgres
+      available:
+        - name: app
+        - name: postgres
