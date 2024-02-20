@@ -89,7 +89,13 @@ THIRD_PARTY_APPS = [
     'drf_spectacular',
 ]
 
-LOCAL_APPS = ['growth_plan_linker.users', 'growth_plan_linker']
+LOCAL_APPS = [
+    'growth_plan_linker.users',
+    'growth_plan_linker',
+    'projects.apps.ProjectsConfig',
+    'linker.apps.LinkerConfig',
+    'growth_plan.apps.GrowthPlanConfig',
+]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 

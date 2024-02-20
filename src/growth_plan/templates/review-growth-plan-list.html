@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container py-4">
+    <h2>
+      Growth Plan Review
+    </h2>
+    <div class="row">
+      {% for item in items %}
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ item.title }}
+              </h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                Assigned to: {{ item.user.get_full_name }}
+              </h6>
+              <p class="card-text">
+                {{ item.description }}
+              </p>
+              <p>
+                Progress: {{ item.progress_percentage }}%
+              </p>
+              <p>
+                Duration: {{ item.start_date }} to {{ item.end_date }}
+              </p>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p>
+          No growth plan items to review.
+        </p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}

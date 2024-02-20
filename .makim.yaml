@@ -121,7 +121,7 @@ groups:
           CWD=$(pwd)
           CMD_FLAG="{{ '--check' if args.check else '' }} --no-input"
 
-          for app in 'sites' 'growth_plan_linker' ''; do
+          for app in 'sites' 'growth_plan_linker' 'projects' 'linker' ''; do
             echo -e "\nMaking migration files for: '${app}' ...\n"
             CMD="python manage.py makemigrations ${CMD_FLAG} ${app}"
             sugar run --service app --cmd $CMD

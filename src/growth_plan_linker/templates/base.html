@@ -38,6 +38,27 @@
             type="text/css" />
       <link href="{% static 'css/styles.css' %}"
             rel="stylesheet" />
+      <style>
+        /* styles.css */
+
+        html,
+        body {
+          height: 100%;
+        }
+
+        body {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .content-wrapper {
+          flex: 1;
+        }
+
+        .footer {
+          margin-top: auto;
+        }
+      </style>
       {% compress css %}
         <link href="{% static 'css/project.css' %}"
               rel="stylesheet" />
@@ -95,7 +116,15 @@
                  href="{% url 'about' %}">About</a>
             </li>
             {% if request.user.is_authenticated %}
-              <li class="nav-item">
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded"
+                   href="{% url 'project-list' %}">{% translate "Projects" %}</a>
+              </li>
+              <li class="nav-item mx-0 mx-lg-1">
+                <a class="nav-link py-3 px-0 px-lg-3 rounded"
+                   href="{% url 'user-growth-plan-list' %}">{% translate "Growth Plan" %}</a>
+              </li>
+              <li class="nav-item mx-0 mx-lg-1">
                 <a class="nav-link py-3 px-0 px-lg-3 rounded"
                    href="{% url 'users:detail' request.user.pk %}">{% translate "My Profile" %}</a>
               </li>
@@ -214,7 +243,7 @@
     <!-- Copyright Section-->
     <div class="copyright py-4 text-center text-white">
       <div class="container">
-        <small>Copyright &amp;copy; Open Science Labs 2024</small>
+        <small>Copyright © Open Science Labs 2024</small>
       </div>
     </div>
   </body>

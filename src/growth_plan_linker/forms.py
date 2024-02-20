@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from .models import Feedback, Link, Profile, Project
+from .models import Profile
 
 
 class UserRegisterForm(UserCreationForm):
@@ -27,46 +27,3 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = []  # Specify the fields you want to include, e.g., []
-
-
-class ProjectForm(forms.ModelForm):
-    class Meta:
-        model = Project
-        fields = [
-            'name',
-            'supervisors',
-        ]  # Adjust according to your Project model fields
-
-
-class LinkForm(forms.ModelForm):
-    class Meta:
-        model = Link
-        fields = [
-            'person_one',
-            'person_two',
-            'supervisor',
-            'periodicity',
-            'times',
-        ]
-        widgets = {
-            'person_one': forms.Select(attrs={'class': 'form-control'}),
-            'person_two': forms.Select(attrs={'class': 'form-control'}),
-            'supervisor': forms.Select(attrs={'class': 'form-control'}),
-            'periodicity': forms.Select(
-                choices=Link.PERIODICITY_CHOICES,
-                attrs={'class': 'form-control'},
-            ),
-            'times': forms.NumberInput(attrs={'class': 'form-control'}),
-        }
-
-
-class FeedbackForm(forms.ModelForm):
-    class Meta:
-        model = Feedback
-        fields = ['content', 'link']
-        widgets = {
-            'content': forms.Textarea(
-                attrs={'class': 'form-control', 'rows': 3}
-            ),
-            'link': forms.Select(attrs={'class': 'form-control'}),
-        }

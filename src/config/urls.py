@@ -11,6 +11,11 @@ from drf_spectacular.views import SpectacularAPIView
 from drf_spectacular.views import SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 
+from growth_plan_linker.urls import (
+    urlpatterns as urlpatterns_growth_plan_linker,
+)
+
+
 urlpatterns = [
     path(
         '', TemplateView.as_view(template_name='pages/home.html'), name='home'
@@ -31,7 +36,8 @@ urlpatterns = [
     # ...
     # Media files
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
-]
+] + urlpatterns_growth_plan_linker
+
 if settings.DEBUG:
     # Static file serving when using Gunicorn + Uvicorn for local web socket development
     urlpatterns += staticfiles_urlpatterns()
