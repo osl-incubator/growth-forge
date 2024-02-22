@@ -45,7 +45,7 @@ services:
     volumes:
       - ./docs:/docs:z
       - ./config:/app/config:z
-      - ./growth_plan_linker:/app/growth_plan_linker:z
+      - ./growth_forge:/app/growth_forge:z
     ports:
       - "9000:9000"
     command: /start-docs

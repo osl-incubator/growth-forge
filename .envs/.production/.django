@@ -4,7 +4,7 @@
 DJANGO_SETTINGS_MODULE=config.settings.production
 DJANGO_SECRET_KEY=rzB5Sl2LAHyQOR5SAKqc0KeJTyUjNYVhd0ovG6H1dGrdvpd2FtZ9phEacFvFcbd0
 DJANGO_ADMIN_URL=Rz4fpz5g02YMT9VXPQ4QMu8J3hoXOIBa/
-DJANGO_ALLOWED_HOSTS=.https://opensciencelabs.github.io/growth-plan-linker
+DJANGO_ALLOWED_HOSTS=.https://opensciencelabs.github.io/growth-forge
 
 # Security
 # ------------------------------------------------------------------------------

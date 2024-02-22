@@ -28,7 +28,7 @@ certificatesResolvers:
 http:
   routers:
     web-secure-router:
-      rule: "Host(`https://opensciencelabs.github.io/growth-plan-linker`)"
+      rule: "Host(`https://opensciencelabs.github.io/growth-forge`)"
       entryPoints:
         - web-secure
       middlewares:
@@ -39,7 +39,7 @@ http:
         certResolver: letsencrypt
 
     web-media-router:
-      rule: "Host(`https://opensciencelabs.github.io/growth-plan-linker`) && PathPrefix(`/media/`)"
+      rule: "Host(`https://opensciencelabs.github.io/growth-forge`) && PathPrefix(`/media/`)"
       entryPoints:
         - web-secure
       middlewares:

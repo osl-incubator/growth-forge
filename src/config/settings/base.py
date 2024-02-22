@@ -6,8 +6,8 @@ from pathlib import Path
 import environ
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
-# growth_plan_linker/
-APPS_DIR = BASE_DIR / 'growth_plan_linker'
+# growth_forge/
+APPS_DIR = BASE_DIR / 'growth_forge'
 env = environ.Env()
 
 READ_DOT_ENV_FILE = env.bool('DJANGO_READ_DOT_ENV_FILE', default=False)
@@ -87,13 +87,14 @@ THIRD_PARTY_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'drf_spectacular',
+    'djf_surveys',
 ]
 
 LOCAL_APPS = [
-    'growth_plan_linker.users',
-    'growth_plan_linker',
+    'growth_forge.users',
+    'growth_forge',
     'projects.apps.ProjectsConfig',
-    'linker.apps.LinkerConfig',
+    'one_on_one.apps.LinkerConfig',
     'growth_plan.apps.GrowthPlanConfig',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -102,7 +103,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {'sites': 'growth_plan_linker.contrib.sites.migrations'}
+MIGRATION_MODULES = {'sites': 'growth_forge.contrib.sites.migrations'}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -202,7 +203,8 @@ TEMPLATES = [
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
-                'growth_plan_linker.users.context_processors.allauth_settings',
+                'djf_surveys.context_processors.surveys_context',
+                'growth_forge.users.context_processors.allauth_settings',
             ],
         },
     },
@@ -214,6 +216,10 @@ FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 # http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+
+# DATE
+
+DATE_INPUT_FORMATS = ['%Y-%m-%d']
 
 # FIXTURES
 # ------------------------------------------------------------------------------
@@ -295,16 +301,14 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 # https://docs.allauth.org/en/latest/account/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 # https://docs.allauth.org/en/latest/account/configuration.html
-ACCOUNT_ADAPTER = 'growth_plan_linker.users.adapters.AccountAdapter'
+ACCOUNT_ADAPTER = 'growth_forge.users.adapters.AccountAdapter'
 # https://docs.allauth.org/en/latest/account/forms.html
-ACCOUNT_FORMS = {'signup': 'growth_plan_linker.users.forms.UserSignupForm'}
+ACCOUNT_FORMS = {'signup': 'growth_forge.users.forms.UserSignupForm'}
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
-SOCIALACCOUNT_ADAPTER = (
-    'growth_plan_linker.users.adapters.SocialAccountAdapter'
-)
+SOCIALACCOUNT_ADAPTER = 'growth_forge.users.adapters.SocialAccountAdapter'
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
 SOCIALACCOUNT_FORMS = {
-    'signup': 'growth_plan_linker.users.forms.UserSocialSignupForm',
+    'signup': 'growth_forge.users.forms.UserSocialSignupForm',
 }
 # django-compressor
 # ------------------------------------------------------------------------------
@@ -331,8 +335,8 @@ CORS_URLS_REGEX = r'^/api/.*$'
 # By Default swagger ui is available only to admin user(s). You can change permission classes to change that
 # See more configuration options at https://drf-spectacular.readthedocs.io/en/latest/settings.html#settings
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Growth-Plan-Linker API',
-    'DESCRIPTION': 'Documentation of API endpoints of Growth-Plan-Linker',
+    'TITLE': 'GrowthForge API',
+    'DESCRIPTION': 'Documentation of API endpoints of GrowthForge',
     'VERSION': '1.0.0',
     'SERVE_PERMISSIONS': ['rest_framework.permissions.IsAdminUser'],
 }

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "growth-plan-linker"
+name = "growth-forge"
 version = "0.1.0"  # semantic-release
 description = "The main objective of this platform is to offer a space to handle and organize feedback between two people"
 authors = ["Ivan Ogasawara <ivan.ogasawara@gmail.com>"]
@@ -8,7 +8,7 @@ exclude = [
   ".git/*",
   ".env*",
 ]
-include = ["src/growth_plan_linker/py.typed"]
+include = ["src/growth_forge/py.typed"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4"
@@ -35,6 +35,7 @@ drf-spectacular = ">=0.27.1"  # https://github.com/tfranzel/drf-spectacular
 gunicorn = ">=21.2.0"  # https://github.com/benoitc/gunicorn
 psycopg = {version = ">=3.1.18", extras = ["binary"]}  # https://github.com/psycopg/psycopg
 sentry-sdk = ">=1.40.4"  # https://github.com/getsentry/sentry-python
+django-form-surveys = ">=2.0.4"
 
 
 [tool.poetry.dev-dependencies]
@@ -100,7 +101,7 @@ python_files = [
 
 # ==== Coverage ====
 [tool.coverage.run]
-include = ["src/growth_plan_linker/**"]
+include = ["src/growth_forge/**"]
 omit = ["*/migrations/*", "*/tests/*"]
 plugins = ["django_coverage_plugin"]
 
@@ -114,7 +115,7 @@ ignore_missing_imports = true
 warn_unused_ignores = true
 warn_redundant_casts = true
 warn_unused_configs = true
-files = ["./src/growth_plan_linker"]
+files = ["./src/growth_forge"]
 plugins = [
     "mypy_django_plugin.main",
     "mypy_drf_plugin.main",
@@ -125,13 +126,18 @@ plugins = [
 module = "*.migrations.*"
 ignore_errors = true
 
+[[tool.mypy.overrides]]
+module = "NewSemanalDjangoPlugin"
+ignore_errors = true
+
+# ==== djLint ====
 [tool.django-stubs]
 django_settings_module = "config.settings.test"
 strict_settings = false
 ignore_missing_model_attributes = true
 
 # [[tool.mypy.overrides]]
-# module = "growth_plan_linker.forms"
+# module = "growth_forge.forms"
 # ignore_errors = true
 
 [[tool.mypy.overrides]]

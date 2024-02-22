@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container py-4">
+    <h2>
+      Delete Link
+    </h2>
+    <p>
+      Are you sure you want to delete the link between {{ object.mentor }} and {{ object.mentee }}?
+    </p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit"
+              class="btn btn-danger">
+        Confirm Delete
+      </button>
+      <a href="{% url 'link-list' %}"
+         class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+{% endblock content %}

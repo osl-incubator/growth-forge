@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
-from growth_plan_linker.users.models import User
+from growth_forge.users.models import User
 
 from .forms import ProjectForm
 from .models import Project

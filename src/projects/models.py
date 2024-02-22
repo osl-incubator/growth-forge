@@ -6,7 +6,7 @@ class Project(models.Model):
     name = models.CharField(max_length=100)
     # Assuming you want to keep a relation to track project observers
     observers = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, related_name='supervised_projects'
+        settings.AUTH_USER_MODEL, related_name='observers_projects'
     )
 
     def __str__(self):

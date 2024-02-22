@@ -1,4 +1,4 @@
-# Translations for the Growth-Plan-Linker project
+# Translations for the GrowthForge project
 # Copyright (C) 2024 Ivan Ogasawara
 # Ivan Ogasawara <ivan.ogasawara@gmail.com>, 2024.
 #

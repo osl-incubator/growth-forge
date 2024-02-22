@@ -1,12 +1,12 @@
 ![LOGO](/images/logo.png)
 
-# Growth Plan Linker
+# Growth Forge
 
 The main objective of this platform is to offer a space to handle and organize
 feedback between two people
 
 - License: BSD 3 Clause
-- Documentation: https://growth-plan-linker.github.io
+- Documentation: https://growth-forge.github.io
 
 ## Features
 

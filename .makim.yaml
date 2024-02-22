@@ -121,11 +121,9 @@ groups:
           CWD=$(pwd)
           CMD_FLAG="{{ '--check' if args.check else '' }} --no-input"
 
-          for app in 'sites' 'growth_plan_linker' 'projects' 'linker' ''; do
-            echo -e "\nMaking migration files for: '${app}' ...\n"
-            CMD="python manage.py makemigrations ${CMD_FLAG} ${app}"
-            sugar run --service app --cmd $CMD
-          done
+          echo -e "\nMaking migration files ...\n"
+          CMD="python manage.py makemigrations ${CMD_FLAG} sites growth_forge projects one_on_one growth_plan"
+          sugar run --service app --cmd $CMD
 
           echo "[II] postgres is running."
 
@@ -138,3 +136,29 @@ groups:
 
           CMD="python manage.py migrate --no-input"
           sugar run --service app --cmd $CMD
+
+      create-superuser:
+        args:
+          email:
+            help: Specify the username
+            type: string
+            required: True
+          username:
+            help: Specify the username
+            type: string
+            required: True
+          password:
+            help: Specify the password
+            type: string
+            required: True
+        help: create an admin user
+        shell: bash
+        run: |
+          sugar ext start --services postgres --options -d
+          echo "[II] postgres is running."
+
+          export DJANGO_SUPERUSER_PASSWORD={{ args.password }}
+          export DJANGO_SUPERUSER_USERNAME={{ args.username }}
+          CMD="python manage.py createsuperuser --noinput --email {{ args.email }}"
+
+          sugar run --service app --cmd $CMD --options --env DJANGO_SUPERUSER_PASSWORD=$DJANGO_SUPERUSER_PASSWORD --env DJANGO_SUPERUSER_USERNAME=$DJANGO_SUPERUSER_USERNAME

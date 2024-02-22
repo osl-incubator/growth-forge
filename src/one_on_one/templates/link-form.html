@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container py-4">
+    <h2>
+      {{ title }} Link
+    </h2>
+    <form method="post"
+          class="needs-validation"
+          novalidate>
+      {% csrf_token %}
+      <div class="mb-3">
+        {{ form.mentor.label_tag }}
+        {{ form.mentor }}
+        {% for error in form.mentor.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="mb-3">
+        {{ form.mentee.label_tag }}
+        {{ form.mentee }}
+        {% for error in form.mentee.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="mb-3">
+        {{ form.mentor_survey.label_tag }}
+        {{ form.mentor_survey }}
+        {% for error in form.mentor_survey.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="mb-3">
+        {{ form.mentee_survey.label_tag }}
+        {{ form.mentee_survey }}
+        {% for error in form.mentee_survey.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      </div>
+      <!-- Periodicity Field -->
+      <div class="mb-3">
+        {{ form.periodicity.label_tag }}
+        {{ form.periodicity }}
+        {% for error in form.periodicity.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      </div>
+      <!-- Times Field -->
+      <div class="mb-3">
+        {{ form.times.label_tag }}
+        {{ form.times }}
+        {% for error in form.times.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      </div>
+      <button type="submit"
+              class="btn btn-primary">
+        Save
+      </button>
+      <a href="{% url 'link-list' %}"
+         class="btn btn-secondary">Back to Links</a>
+    </form>
+  </div>
+{% endblock content %}
