@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="row">
+    <div class="col">
+      <h1 id="about">
+        About
+      </h1>
+      <p>
+        GrowthForge is a simplified feedback exchange platform designed to facilitate periodic feedback between individuals within specific projects. It aims to streamline communication and insights sharing, enhancing project collaboration and personal development.
+      </p>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col">
+      <h3 id="projects">
+        Projects
+      </h3>
+      <ul>
+        <li>
+          <strong>Creation and Management</strong>: Admin users can create and manage projects, each
+          with specific goals and participants.
+        </li>
+        <li>
+          <strong>Global Access Control</strong>: For each project, certain individuals can be
+          designated to have global access to all feedback related to that project,
+          ensuring oversight and support where needed.
+        </li>
+      </ul>
+      <h3 id="people">
+        People
+      </h3>
+      <ul>
+        <li>
+          <strong>Profile Management</strong>: Admin users can create profiles for individuals who
+          will be associated with zero or more projects. The email used will serve as a
+          constraint for login; only individuals registered by an admin can log into the
+          platform. New users will receive a random password via email.
+        </li>
+        <li>
+          <strong>Project Association</strong>: From the people form, users can select projects to
+          associate with an individual, allowing for flexible project participation.
+        </li>
+        <li>
+          <strong>Login</strong>: Only individuals registered by an admin can log into the platform.
+        </li>
+      </ul>
+      <h3 id="links">
+        Links
+      </h3>
+      <ul>
+        <li>
+          <strong>Feedback Pairing</strong>: The platform allows the creation of links between two
+          individuals, enabling them to exchange feedback periodically. Only an admin
+          can create this link. The admin must define the periodicity (daily, weekly,
+          monthly) and a number that specifies &quot;Every X times&quot; it will be repeated.
+        </li>
+        <li>
+          <strong>Supervisor Assignment</strong>: Each link can have designated supervisors who are
+          granted access to read all the feedback exchanged within that link, ensuring
+          appropriate oversight and support.
+        </li>
+      </ul>
+      <h3 id="feedback">
+        Feedback
+      </h3>
+      <ul>
+        <li>
+          <strong>Periodic Exchange</strong>: Feedback is exchanged periodically (e.g., weekly)
+          between linked individuals, fostering continuous growth and development.
+        </li>
+        <li>
+          <strong>Visibility and Access</strong>: Feedback visibility is controlled through project
+          associations, link-specific supervisors, and global access roles, ensuring
+          information is shared with the right people.
+        </li>
+      </ul>
+      <h2 id="usage">
+        Usage
+      </h2>
+      <ul>
+        <li>
+          <strong>Managing Projects</strong>: Navigate to the Projects section to create, view, and
+          edit projects.
+        </li>
+        <li>
+          <strong>Adding People</strong>: In the People form, you can add individuals to the system
+          and associate them with projects.
+        </li>
+        <li>
+          <strong>Creating Links</strong>: Use the Link form to connect two people for feedback
+          exchange and assign supervisors to oversee the feedback.
+        </li>
+        <li>
+          <strong>Exchanging Feedback</strong>: Linked individuals can start exchanging feedback as
+          per the defined periodic schedule.
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock content %}

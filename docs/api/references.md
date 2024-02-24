@@ -1,3 +1,3 @@
 # Api references
 
-::: growth_plan_linker
+::: growth_forge

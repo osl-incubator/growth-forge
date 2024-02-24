@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: >
-        **Thank you for wanting to report a bug in Growth Plan Linker!**
+        **Thank you for wanting to report a bug in Growth Forge!**
 
 
         ⚠
@@ -15,7 +15,7 @@ body:
         GitHub][issue search].
 
 
-        [issue search]: https://github.com/xmnlab/growth-plan-linker.git/issues?q=is%3Aopen+is%3Aissue+label%3Abug
+        [issue search]: https://github.com/xmnlab/growth-forge.git/issues?q=is%3Aopen+is%3Aissue+label%3Abug
 
   - type: textarea
     attributes:
@@ -124,14 +124,14 @@ body:
 
   - type: textarea
     attributes:
-      # label: Growth Plan Linker version
+      # label: Growth Forge version
       # description: >-
-      # Paste verbatim output from `Growth Plan Linker --version` below, under the prompt line.
+      # Paste verbatim output from `Growth Forge --version` below, under the prompt line.
       # Don't wrap it with triple backticks &mdash; your whole input will be
       # turned into a code snippet automatically.
       render: console
       placeholder: |
-        python -m pip show Growth Plan Linker
+        python -m pip show Growth Forge
     validations:
       required: true
 
@@ -139,9 +139,9 @@ body:
     attributes:
       label: Code of Conduct
       description: |
-        Read the [`Growth Plan Linker` Code of Conduct][CoC] first.
+        Read the [`Growth Forge` Code of Conduct][CoC] first.
 
-        [CoC]: https://github.com/xmnlab/growth-plan-linker.git/coc/CODE_OF_CONDUCT.md
+        [CoC]: https://github.com/xmnlab/growth-forge.git/coc/CODE_OF_CONDUCT.md
       options:
         - label: I agree to follow the Code of Conduct
           required: true

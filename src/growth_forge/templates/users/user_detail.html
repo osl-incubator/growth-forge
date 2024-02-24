@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+  GrowthForge
+{% endblock title %}
+
+{% block content %}
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="mb-3">
+          {{ object.name }}'s Profile
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mb-3">
+          <h5 class="card-header">
+            Profile Information
+          </h5>
+          <div class="card-body">
+            <p class="card-text">
+              <strong>Name:</strong> {{ object.name }}
+            </p>
+            <p class="card-text">
+              <strong>Email:</strong> {{ object.email }}
+            </p>
+            <!-- Add more fields as needed -->
+          </div>
+        </div>
+      </div>
+      {% if object == request.user %}
+        <div class="col-md-6">
+          <div class="card">
+            <h5 class="card-header">
+              Actions
+            </h5>
+            <div class="card-body">
+              <a href="{% url 'users:update' %}"
+                 class="btn btn-primary">Edit My Info</a>
+              <a href="{% url 'account_email' %}"
+                 class="btn btn-primary">Change E-Mail</a>
+              <!-- Your Stuff: Custom user template urls -->
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock content %}

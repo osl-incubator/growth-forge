@@ -1,4 +1,4 @@
-name: growth-plan-linker
+name: growth-forge
 channels:
   - nodefaults
   - conda-forge

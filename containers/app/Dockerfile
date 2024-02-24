@@ -18,7 +18,7 @@ SHELL ["/bin/bash", "-c"]
 # executing commands with /bin/bash -c
 # Needed to have the micromamba activate command configured etc.
 
-ENV ENV_NAME=growth-plan-linker
+ENV ENV_NAME=growth-forge
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
 ARG UID=1000

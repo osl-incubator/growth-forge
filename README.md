@@ -1,15 +1,15 @@
-# Growth-Plan-Linker
+# GrowthForge
 
-Growth-Plan-Linker is a simplified feedback exchange platform designed to
-facilitate periodic feedback between individuals within specific projects. It
-aims to streamline communication and insights sharing, enhancing project
-collaboration and personal development.
+GrowthForge is a simplified feedback exchange platform designed to facilitate
+periodic feedback between individuals within specific projects. It aims to
+streamline communication and insights sharing, enhancing project collaboration
+and personal development.
 
-- Documentation: <https://opensciencelabs.github.io/growth-plan-linker>
+- Documentation: <https://opensciencelabs.github.io/growth-forge>
 
 ## Features
 
-Growth-Plan-Linker includes several key features to manage feedback efficiently:
+GrowthForge includes several key features to manage feedback efficiently:
 
 ### Projects
 
@@ -60,13 +60,13 @@ Growth-Plan-Linker includes several key features to manage feedback efficiently:
 
 ## Contributing
 
-Growth-Plan-Linker is open for contributions. Whether it's feature requests, bug
-reports, or code contributions, we welcome your input to make Growth-Plan-Linker
+GrowthForge is open for contributions. Whether it's feature requests, bug
+reports, or code contributions, we welcome your input to make GrowthForge
 better. Please see our contributing guidelines for more information.
 
 ## License
 
-Growth-Plan-Linker is licensed under the BSD 3-Clause License.
+GrowthForge is licensed under the BSD 3-Clause License.
 
 ## Contact
 
@@ -74,5 +74,5 @@ For support or to get in touch with the developers, please open an issue.
 
 ---
 
-We hope Growth-Plan-Linker enhances your project collaboration and personal
-development efforts!
+We hope GrowthForge enhances your project collaboration and personal development
+efforts!

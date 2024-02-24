@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 
 from .models import GrowthPlanItem
 
@@ -16,13 +17,12 @@ class GrowthPlanItemForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
-            # Specify the date format for start_date and end_date fields
             'start_date': forms.DateInput(
-                format='%Y-%m-%d',
+                format=[settings.DATE_INPUT_FORMATS[0]],
                 attrs={'class': 'form-control', 'type': 'date'},
             ),
             'end_date': forms.DateInput(
-                format='%Y-%m-%d',
+                format=[settings.DATE_INPUT_FORMATS[0]],
                 attrs={'class': 'form-control', 'type': 'date'},
             ),
             'progress_percentage': forms.NumberInput(

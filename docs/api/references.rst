@@ -1,8 +1,8 @@
 API references
 ==============
 
-.. automodule:: growth_plan_linker
+.. automodule:: growth_forge
     :members:
 
-.. automodule:: growth_plan_linker.growth_plan_linker
+.. automodule:: growth_forge.growth_forge
     :members:

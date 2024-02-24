@@ -11,10 +11,9 @@ from drf_spectacular.views import SpectacularAPIView
 from drf_spectacular.views import SpectacularSwaggerView
 from rest_framework.authtoken.views import obtain_auth_token
 
-from growth_plan_linker.urls import (
+from growth_forge.urls import (
     urlpatterns as urlpatterns_growth_plan_linker,
 )
-
 
 urlpatterns = [
     path(
@@ -28,12 +27,12 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
-    path(
-        'users/', include('growth_plan_linker.users.urls', namespace='users')
-    ),
+    path('users/', include('growth_forge.users.urls', namespace='users')),
     path('accounts/', include('allauth.urls')),
-    # Your stuff: custom urls includes go here
-    # ...
+    # 3rd-party
+    path(
+        'surveys/', include('djf_surveys.urls')
+    ),  # it needs admin permissions
     # Media files
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ] + urlpatterns_growth_plan_linker

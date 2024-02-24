@@ -19,6 +19,13 @@
                name="name"
                value="{{ form.name.value|default_if_none:'' }}"
                required />
+        {% if form.name.errors %}
+          {% for error in form.name.errors %}
+            <div class="alert alert-danger">
+              {{ error }}
+            </div>
+          {% endfor %}
+        {% endif %}
       </div>
       <div class="mb-3">
         <label class="form-label">
@@ -26,11 +33,11 @@
         </label>
         <select multiple
                 class="form-select"
-                name="supervisors"
+                name="observers"
                 required>
           {% for user in users %}
             <option value="{{ user.id }}"
-                    {% if user.id in form.supervisors.value|default_if_none:'' %}
+                    {% if user.id in form.observers.value|default_if_none:'' %}
                       selected
                     {% endif %}>
               {{ user.email|default:user.username }}
@@ -40,6 +47,13 @@
         <div class="form-text">
           Hold down the Ctrl (windows) or Command (Mac) button to select multiple options.
         </div>
+        {% if form.name.errors %}
+          {% for error in form.observers.errors %}
+            <div class="alert alert-danger">
+              {{ error }}
+            </div>
+          {% endfor %}
+        {% endif %}
       </div>
       <button type="submit"
               class="btn btn-primary">

@@ -3,9 +3,9 @@
 FROM condaforge/mambaforge:latest
 
 LABEL maintainer="Ivan Ogasawara <ivan.ogasawara@gmail.com>"
-LABEL org.opencontainers.image.title="Growth Plan Linker"
-LABEL org.opencontainers.image.authors="Growth Plan Linker Team"
-LABEL org.opencontainers.image.source="https://github.com/xmnlab/growth-plan-linker.git"
+LABEL org.opencontainers.image.title="Growth Forge"
+LABEL org.opencontainers.image.authors="Growth Forge Team"
+LABEL org.opencontainers.image.source="https://github.com/xmnlab/growth-forge.git"
 LABEL org.opencontainers.image.version="latest"
 LABEL org.opencontainers.image.description="The main objective of this platform is to offer a space to handle and organize feedback between two people"
 
@@ -18,7 +18,7 @@ SHELL ["/bin/bash", "-c"]
 # executing commands with /bin/bash -c
 # Needed to have the micromamba activate command configured etc.
 
-ENV ENV_NAME=growth_plan_linker
+ENV ENV_NAME=growth_forge
 ENV DEBIAN_FRONTEND=noninteractive
 ARG UID=1000
 ARG GID=1000
@@ -39,9 +39,9 @@ RUN apt-get update && \
         vim && \
     rm -rf /var/lib/apt/lists/*
 
-USER growth_plan_linker
+USER growth_forge
 
-WORKDIR /growth-plan-linker
+WORKDIR /growth-forge
 
 COPY pyproject.toml .
 
@@ -54,10 +54,10 @@ RUN mamba install -y poetry && \
     poetry install --no-dev --no-interaction --no-ansi
 
 
-COPY . /growth-plan-linker/
+COPY . /growth-forge/
 
 COPY . .
 
 COPY compose.yaml .
 
-CMD ["python", "growth_plan_linker.py"]
+CMD ["python", "growth_forge.py"]

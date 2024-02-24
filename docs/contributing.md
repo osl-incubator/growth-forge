@@ -2,7 +2,7 @@
 
 In order to be able to contribute, it is important that you understand the
 project layout. This project uses the _src layout_, which means that the package
-code is located at `./src/growth_plan_linker`.
+code is located at `./src/growth_forge`.
 
 For my information, check the official documentation:
 https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/
@@ -24,7 +24,7 @@ You can contribute in many ways:
 
 ### Report Bugs
 
-Report bugs at https://github.com/xmnlab/growth-plan-linker.git/issues.
+Report bugs at https://github.com/xmnlab/growth-forge.git/issues.
 
 If you are reporting a bug, please include:
 
@@ -44,14 +44,14 @@ and “help wanted” is open to whoever wants to implement it.
 
 ### Write Documentation
 
-Growth Plan Linker could always use more documentation, whether as part of the
-official Growth Plan Linker docs, in docstrings, or even on the web in blog
-posts, articles, and such.
+Growth Forge could always use more documentation, whether as part of the
+official Growth Forge docs, in docstrings, or even on the web in blog posts,
+articles, and such.
 
 ### Submit Feedback
 
 The best way to send feedback is to file an issue at
-https://github.com/xmnlab/growth-plan-linker.git/issues.
+https://github.com/xmnlab/growth-forge.git/issues.
 
 If you are proposing a feature:
 
@@ -62,21 +62,19 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here’s how to set up `growth-plan-linker` for local
-development.
+Ready to contribute? Here’s how to set up `growth-forge` for local development.
 
-1.  Fork the `growth-plan-linker` repo on GitHub.
+1.  Fork the `growth-forge` repo on GitHub.
 
 2.  Clone your fork locally::
 
-    $ git clone git@github.com:your_name_here/growth-plan-linker.git
+    $ git clone git@github.com:your_name_here/growth-forge.git
 
 3.  Install your local copy into a virtualenv. Assuming you have
     virtualenvwrapper installed, this is how you set up your fork for local
     development::
 
-    $ mkvirtualenv growth-plan-linker $ cd growth-plan-linker/ $ python setup.py
-    develop
+    $ mkvirtualenv growth-forge $ cd growth-forge/ $ python setup.py develop
 
 4.  Create a branch for local development::
 

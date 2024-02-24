@@ -889,6 +889,21 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-form-surveys"
+version = "2.0.4"
+description = "A simple Django app to conduct Web-based survey"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "django-form-surveys-2.0.4.tar.gz", hash = "sha256:67f4214ea9a59c63afbaa52edd3da1c744a968eaba48bd2bfb20fb2473812e4b"},
+    {file = "django_form_surveys-2.0.4-py3-none-any.whl", hash = "sha256:ea34ad9842c16bccd0e62a931f77c5bd1216c52bbff994d3be6f1d34e1f15f8a"},
+]
+
+[package.dependencies]
+django = ">=2.2"
+pytz = "*"
+
+[[package]]
 name = "django-model-utils"
 version = "4.4.0"
 description = "Django model mixins and utilities"
@@ -4564,4 +4579,4 @@ test = ["coverage (>=5.3.1)", "prompt-toolkit (>=3.0.29)", "pygments (>=2.2)", "
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<4"
-content-hash = "591ae737f1ada112a23e0c6ed8b87e766d54dca113d81e56fa12740affdaa363"
+content-hash = "4a4cebd8bfe164094b1c9874a2693f2a5504669b57535f7a55dd03d6477eda3f"

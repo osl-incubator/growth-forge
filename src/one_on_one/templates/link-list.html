@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container py-4">
+    <h2>
+      Links
+    </h2>
+    <a href="{% url 'link-create' %}"
+       class="btn btn-primary mb-3">Add New Link</a>
+    <div class="row">
+      {% for link in links %}
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-header">
+              Link between {{ link.mentor }} and {{ link.mentee }}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">
+                Mentor Survey: {{ link.mentor_survey }}
+              </h5>
+              <p class="card-text">
+                Mentee Survey: {{ link.mentee_survey }}
+              </p>
+              <a href="{% url 'link-edit' link.id %}"
+                 class="btn btn-secondary">Edit</a>
+              <a href="{% url 'link-delete' link.id %}"
+                 class="btn btn-danger">Delete</a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p>
+          No links found.
+        </p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}

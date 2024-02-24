@@ -10,8 +10,8 @@ if [ $is_conda_in_path == 0 ]; then
   echo "[II] included conda to the PATH"
 fi
 
-echo "[II] activate growth-plan-linker"
-source activate growth-plan-linker
+echo "[II] activate growth-forge"
+source activate growth-forge
 
 pushd /opt/appfiles
 if [[ "${ENV:-dev}" != "dev" ]]; then
