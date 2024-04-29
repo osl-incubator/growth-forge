@@ -1,6 +1,6 @@
 site_name: Growth Forge
-site_url: https://opensciencelabs.github.io/growth-forge
-repo_url: https://github.com/xmnlab/growth-forge.git
+site_url: https://osl-incubator.github.io/growth-forge
+repo_url: https://github.com/osl-incubator/growth-forge.git
 docs_dir: ./docs
 site_dir: ./build
 # extra_css:
@@ -11,8 +11,6 @@ nav:
   - Installation: installation.md
   - Changelog: changelog.md
   - Contributing: contributing.md
-  - API: api/references.md
-  - Notebook page: example.ipynb
 theme:
   name: material
   features:
