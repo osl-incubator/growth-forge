@@ -65,34 +65,44 @@ If you are proposing a feature:
 Ready to contribute? Here’s how to set up `growth-forge` for local development.
 
 1.  Fork the `growth-forge` repo on GitHub.
+2.  Clone your fork locally:
 
-2.  Clone your fork locally::
+```bash
+$ git clone git@github.com:your_name_here/growth-forge.git
+```
 
-    $ git clone git@github.com:your_name_here/growth-forge.git
+3.  Install your local copy into a conda virtual environment:
 
-3.  Install your local copy into a virtualenv. Assuming you have
-    virtualenvwrapper installed, this is how you set up your fork for local
-    development::
+```bash
+$ cd growth-forge/  # in the case you are not in the root of the project
+$ mamba env create --file conda/dev.yaml
+$ conda activate growth-forge
+$ poetry install
+```
 
-    $ mkvirtualenv growth-forge $ cd growth-forge/ $ python setup.py develop
+4.  Create a branch for local development:
 
-4.  Create a branch for local development::
-
-    $ git checkout -b name-of-your-bugfix-or-feature
+```bash
+$ git checkout -b name-of-your-bugfix-or-feature
+```
 
     Now you can make your changes locally.
 
-5.  When you’re done making changes, check that your changes pass flake8 and the
-    tests, including testing other Python versions with tox::
+5.  When you’re done making changes, check that your changes pass the linter and
+    the tests:
 
-    $ make lint $ make test
+```bash
+$ makim tests.unit
+$ makim tests.linter
+```
 
-    To get flake8 and tox, just pip install them into your virtualenv.
+6.  Commit your changes and push your branch to GitHub:
 
-6.  Commit your changes and push your branch to GitHub::
-
-    $ git add . $ git commit -m “Your detailed description of your changes.” $
-    git push origin name-of-your-bugfix-or-feature
+```bash
+$ git add .
+$ git commit -m "Your detailed description of your changes."
+$ git push origin name-of-your-bugfix-or-feature
+```
 
 7.  Submit a pull request through the GitHub website.
 
@@ -105,14 +115,6 @@ Before you submit a pull request, check that it meets these guidelines:
     new functionality into a function with a docstring, and add the feature to
     the list in README.rst.
 3.  The pull request should work for Python >= 3.8.
-
-## Tips
-
-To run a subset of tests::
-
-```
-$ pytest tests.test_feedback_linker
-```
 
 ## Release
 
@@ -148,7 +150,7 @@ The table below shows which commit message gets you which release type when
 | `fix(pencil): stop graphite breaking when pressure is applied` | Fix Release      |
 | `feat(pencil): add 'graphiteWidth' option`                     | Feature Release  |
 | `perf(pencil): remove graphiteWidth option`                    | Chore            |
-| `BREAKING CHANGE: The graphiteWidth option has been removed`   | Breaking Release |
+| `feat(pencil)!: The graphiteWidth option has been removed`     | Breaking Release |
 
 source:
 <https://github.com/semantic-release/semantic-release/blob/master/README.md#commit-message-format>
