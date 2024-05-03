@@ -405,6 +405,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configurations-before-working-on-growth-forge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configurations before working on Growth-Forge
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pull-request-guidelines" class="md-nav__link">
     <span class="md-ellipsis">
       Pull Request Guidelines
@@ -541,6 +550,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configurations-before-working-on-growth-forge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configurations before working on Growth-Forge
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pull-request-guidelines" class="md-nav__link">
     <span class="md-ellipsis">
       Pull Request Guidelines
@@ -645,7 +663,7 @@ articles, and such.</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:your_name_here/growth-forge.git
 </code></pre></div>
 <ol>
-<li>Install your local copy into a conda virtual environment:</li>
+<li><strong>Install Dependencies</strong>: Use <code>mamba</code> to create a Conda environment and<code>poetry</code> for managing Python dependencies.</li>
 </ol>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>growth-forge/<span class="w">  </span><span class="c1"># in the case you are not in the root of the project</span>
 $<span class="w"> </span>mamba<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>--file<span class="w"> </span>conda/dev.yaml
@@ -676,6 +694,50 @@ $<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>
 </code></pre></div>
 <ol>
 <li>Submit a pull request through the GitHub website.</li>
+</ol>
+<h2 id="configurations-before-working-on-growth-forge">Configurations before working on Growth-Forge</h2>
+<ol>
+<li>
+<p>If you don't have Docker installed, you can visit the following page:
+   <a href="https://docs.docker.com/engine/install/ubuntu/">click here</a> and follow the
+   steps. Do not forget to see the steps of post install
+   <a href="https://docs.docker.com/engine/install/linux-postinstall/">here</a></p>
+</li>
+<li>
+<p>Run the following command:</p>
+</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>sugar<span class="w"> </span>build
+</code></pre></div>
+3. It is important to run the command:</p>
+<p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>makim<span class="w"> </span>django.migrate
+</code></pre></div>
+This command is executed to apply migrations based on the current migration files.</p>
+<ol>
+<li>To create a superuser, you should use the following commands with your information:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>makim<span class="w"> </span>django.create-superuser<span class="w"> </span>--email
+$<span class="w"> </span>makim<span class="w"> </span>django.create-superuser<span class="w"> </span>--username
+$<span class="w"> </span>makim<span class="w"> </span>django.create-superuser<span class="w"> </span>--password
+</code></pre></div>
+<ol>
+<li>Run the comand to execute Django:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sugar<span class="w"> </span>ext<span class="w"> </span>start<span class="w"> </span>--options<span class="w"> </span>-d
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sugar<span class="w"> </span>ext<span class="w"> </span>restart<span class="w"> </span>--options<span class="w"> </span>-d
+</code></pre></div>
+<p>The project will be accessible at <code>localhost:8000</code>.</p>
+<ol>
+<li>To view all logs, you can execute the following command:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sugar<span class="w"> </span>ext<span class="w"> </span>restart<span class="w"> </span>--options
+</code></pre></div>
+<p>The command mentioned is used to restart the project, which can be useful when registering a new user.</p>
+<p>After adding a new user, you should check the console for the email verification link. To complete the email verification, click on the link, which will open in your browser. There, you will see the option to verify the email. This step is crucial to ensure the email address is valid and active, enabling the new user to fully utilize their account.</p>
+<ol>
+<li>Once you have accessed the verification link and verified your email, you can navigate through the menu of the project "growth-forge." This menu will likely offer various options related to project settings.</li>
 </ol>
 <h2 id="pull-request-guidelines">Pull Request Guidelines</h2>
 <p>Before you submit a pull request, check that it meets these guidelines:</p>
