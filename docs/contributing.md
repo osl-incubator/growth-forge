@@ -71,7 +71,8 @@ Ready to contribute? Here’s how to set up `growth-forge` for local development
 $ git clone git@github.com:your_name_here/growth-forge.git
 ```
 
-3. **Install Dependencies**: Use `mamba` to create a Conda environment and`poetry` for managing Python dependencies.
+3. **Install Dependencies**: Use `mamba` to create a Conda environment
+   and`poetry` for managing Python dependencies.
 
 ```bash
 $ cd growth-forge/  # in the case you are not in the root of the project
@@ -118,14 +119,18 @@ $ git push origin name-of-your-bugfix-or-feature
 ```bash
 $ sugar build
 ```
+
 3. It is important to run the command:
 
 ```bash
 $ makim django.migrate
 ```
-This command is executed to apply migrations based on the current migration files.
 
-4.  To create a superuser, you should use the following commands with your information:
+This command is executed to apply migrations based on the current migration
+files.
+
+4.  To create a superuser, you should use the following commands with your
+    information:
 
 ```bash
 $ makim django.create-superuser --email
@@ -153,12 +158,18 @@ The project will be accessible at `localhost:8000`.
 $ sugar ext restart --options
 ```
 
-The command mentioned is used to restart the project, which can be useful when registering a new user.
+The command mentioned is used to restart the project, which can be useful when
+registering a new user.
 
-After adding a new user, you should check the console for the email verification link. To complete the email verification, click on the link, which will open in your browser. There, you will see the option to verify the email. This step is crucial to ensure the email address is valid and active, enabling the new user to fully utilize their account.
+After adding a new user, you should check the console for the email verification
+link. To complete the email verification, click on the link, which will open in
+your browser. There, you will see the option to verify the email. This step is
+crucial to ensure the email address is valid and active, enabling the new user
+to fully utilize their account.
 
-7. Once you have accessed the verification link and verified your email, you can navigate through the menu of the project "growth-forge." This menu will likely offer various options related to project settings.
-
+7. Once you have accessed the verification link and verified your email, you can
+   navigate through the menu of the project "growth-forge." This menu will
+   likely offer various options related to project settings.
 
 ## Pull Request Guidelines
 
