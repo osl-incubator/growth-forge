@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
-
+from typing import Optional
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import UserManager as DjangoUserManager
 
@@ -14,7 +14,7 @@ class UserManager(DjangoUserManager['User']):
     """Custom manager for the User model."""
 
     def _create_user(
-        self, email: str, password: str | None, **extra_fields
+        self, email: str, password: str, username: Optional[str] = None, **extra_fields
     ) -> User:
         """
         Create and save a user with the given email and password.
@@ -23,7 +23,7 @@ class UserManager(DjangoUserManager['User']):
             msg = 'The given email must be set'
             raise ValueError(msg)
         email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+        user = self.model(email=email)
         user.password = make_password(password)
         user.save(using=self._db)
         return user
@@ -36,7 +36,7 @@ class UserManager(DjangoUserManager['User']):
     ):  # type: ignore[override]
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
-        return self._create_user(email, password, **extra_fields)
+        return self._create_user(email, password)
 
     def create_superuser(
         self,
