@@ -1,17 +1,22 @@
-#test models code yet to be inserted 
-from django.test import TestCase
+# test models code yet to be inserted
 from django.contrib.auth import get_user_model
+from django.test import TestCase
 from djf_surveys.models import Survey
+
 from one_on_one.models import Link
 
 User = get_user_model()
 
-class LinkTests(TestCase):
 
+class LinkTests(TestCase):
     def setUp(self):
         # Create users for testing
-        self.mentor = User.objects.create_user(email='mentor@example.com', password='testpassword')
-        self.mentee = User.objects.create_user(email='mentee@example.com', password='testpassword')
+        self.mentor = User.objects.create_user(
+            email='mentor@example.com', password='testpassword'
+        )
+        self.mentee = User.objects.create_user(
+            email='mentee@example.com', password='testpassword'
+        )
 
         # Create surveys for testing
         self.mentor_survey = Survey.objects.create(name='Mentor Survey')

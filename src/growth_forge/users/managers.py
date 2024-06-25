@@ -1,8 +1,8 @@
 # type: ignore
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
+
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import UserManager as DjangoUserManager
 
@@ -14,7 +14,11 @@ class UserManager(DjangoUserManager['User']):
     """Custom manager for the User model."""
 
     def _create_user(
-        self, email: str, password: str, username: Optional[str] = None, **extra_fields
+        self,
+        email: str,
+        password: str,
+        username: Optional[str] = None,
+        **extra_fields,
     ) -> User:
         """
         Create and save a user with the given email and password.

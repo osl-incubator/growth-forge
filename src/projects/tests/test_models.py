@@ -1,15 +1,20 @@
-from django.test import TestCase
 from django.contrib.auth import get_user_model
+from django.test import TestCase
+
 from projects.models import Project
 
 User = get_user_model()
 
-class ProjectTests(TestCase):
 
+class ProjectTests(TestCase):
     def setUp(self):
         # Create users for testing
-        self.user1 = User.objects.create_user(email='user1@example.com', password='testpassword')
-        self.user2 = User.objects.create_user(email='user2@example.com', password='testpassword')
+        self.user1 = User.objects.create_user(
+            email='user1@example.com', password='testpassword'
+        )
+        self.user2 = User.objects.create_user(
+            email='user2@example.com', password='testpassword'
+        )
 
         # Common data for test cases
         self.project_data = {
