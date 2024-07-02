@@ -1,7 +1,7 @@
 # type: ignore
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING
 
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import UserManager as DjangoUserManager
@@ -17,7 +17,6 @@ class UserManager(DjangoUserManager['User']):
         self,
         email: str,
         password: str,
-        username: Optional[str] = None,
         **extra_fields,
     ) -> User:
         """

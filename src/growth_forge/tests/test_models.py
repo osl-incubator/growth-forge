@@ -12,12 +12,12 @@ class ProfileTests(TestCase):
     def setUpClass(cls):
         # Create a user for testing
         cls.user = User.objects.create_user(
-            # username='testuser2',
-            password='testpassword2',
+            password='testpassword2',  # noqa
             email='test@test.com',
         )
         cls.user2 = User.objects.create_user(
-            email='testuser2@example.com', password='testpassword'
+            email='testuser2@example.com',
+            password='testpassword',  # noqa
         )
 
     @classmethod
@@ -28,15 +28,19 @@ class ProfileTests(TestCase):
         cls.user2.delete()
 
     def test_create_profile(self):
-        # The Profile should be created automatically due to the post_save signal
+        """
+        The Profile
+        should be created automatically
+        due to the post_save signal
+        """
         profile = Profile.objects.get(user=self.user)
-        self.assertIsNotNone(profile)
-        self.assertEqual(profile.user.email, 'test@test.com')
+        assert profile is not None
+        assert profile.user.email == 'test@test.com'
 
     def test_retrieve_profile(self):
         profile = Profile.objects.get(user=self.user)
         retrieved_profile = Profile.objects.get(id=profile.id)
-        self.assertEqual(retrieved_profile.user.email, 'test@test.com')
+        assert retrieved_profile.user.email == 'test@test.com'
 
     def test_update_profile(self):
         profile, _ = Profile.objects.get_or_create(user=self.user)
@@ -44,11 +48,11 @@ class ProfileTests(TestCase):
         project = Project.objects.create(name='Test Project')
         profile.projects.add(project)
         # Verify the profile has the project added
-        self.assertIn(project, profile.projects.all())
+        assert project in profile.projects.all()
 
     def test_delete_profile(self):
         profile = Profile.objects.get(user=self.user)
         profile_id = profile.id
         profile.delete()
-        with self.assertRaises(Profile.DoesNotExist):
+        with self.pytest.raises(Profile.DoesNotExist):
             Profile.objects.get(id=profile_id)

@@ -10,10 +10,12 @@ class ProjectTests(TestCase):
     def setUp(self):
         # Create users for testing
         self.user1 = User.objects.create_user(
-            email='user1@example.com', password='testpassword'
+            email='user1@example.com',
+            password='testpassword',  # noqa
         )
         self.user2 = User.objects.create_user(
-            email='user2@example.com', password='testpassword'
+            email='user2@example.com',
+            password='testpassword',  # noqa
         )
 
         # Common data for test cases
@@ -24,18 +26,18 @@ class ProjectTests(TestCase):
     def test_create_project(self):
         project = Project.objects.create(**self.project_data)
         project.observers.add(self.user1, self.user2)
-        self.assertEqual(Project.objects.count(), 1)
-        self.assertEqual(project.name, 'Test Project')
-        self.assertIn(self.user1, project.observers.all())
-        self.assertIn(self.user2, project.observers.all())
+        assert Project.objects.count() == 1
+        assert project.name == 'Test Project'
+        assert self.user1 == project.observers.all()
+        assert self.user2 == project.observers.all()
 
     def test_retrieve_project(self):
         project = Project.objects.create(**self.project_data)
         project.observers.add(self.user1, self.user2)
         retrieved_project = Project.objects.get(id=project.id)
-        self.assertEqual(retrieved_project.name, 'Test Project')
-        self.assertIn(self.user1, retrieved_project.observers.all())
-        self.assertIn(self.user2, retrieved_project.observers.all())
+        assert retrieved_project.name == 'Test Project'
+        assert self.user1 in retrieved_project.observers.all()
+        assert self.user2 in retrieved_project.observers.all()
 
     def test_update_project(self):
         project = Project.objects.create(**self.project_data)
@@ -45,13 +47,13 @@ class ProjectTests(TestCase):
         project.observers.add(self.user2)
         project.save()
         updated_project = Project.objects.get(id=project.id)
-        self.assertEqual(updated_project.name, 'Updated Project')
-        self.assertNotIn(self.user1, updated_project.observers.all())
-        self.assertIn(self.user2, updated_project.observers.all())
+        assert updated_project.name == 'Updated Project'
+        assert self.user1 == updated_project.observers.all()
+        assert self.user2 in updated_project.observers.all()
 
     def test_delete_project(self):
         project = Project.objects.create(**self.project_data)
         project_id = project.id
         project.delete()
-        with self.assertRaises(Project.DoesNotExist):
+        with self.pytest.raises(Project.DoesNotExist):
             Project.objects.get(id=project_id)

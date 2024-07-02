@@ -12,10 +12,12 @@ class LinkTests(TestCase):
     def setUp(self):
         # Create users for testing
         self.mentor = User.objects.create_user(
-            email='mentor@example.com', password='testpassword'
+            email='mentor@example.com',
+            password='testpassword',  # noqa
         )
         self.mentee = User.objects.create_user(
-            email='mentee@example.com', password='testpassword'
+            email='mentee@example.com',
+            password='testpassword',  # noqa
         )
 
         # Create surveys for testing
@@ -34,16 +36,16 @@ class LinkTests(TestCase):
 
     def test_create_link(self):
         link = Link.objects.create(**self.link_data)
-        self.assertEqual(Link.objects.count(), 1)
-        self.assertEqual(link.mentor.email, 'mentor@example.com')
-        self.assertEqual(link.mentee.email, 'mentee@example.com')
-        self.assertEqual(link.periodicity, 'weekly')
+        assert Link.objects.count() == 1
+        assert link.mentor.email == 'mentor@example.com'
+        assert link.mentee.email == 'mentee@example.com'
+        assert link.periodicity == 'weekly'
 
     def test_retrieve_link(self):
         link = Link.objects.create(**self.link_data)
         retrieved_link = Link.objects.get(id=link.id)
-        self.assertEqual(retrieved_link.mentor.email, 'mentor@example.com')
-        self.assertEqual(retrieved_link.mentee.email, 'mentee@example.com')
+        assert retrieved_link.mentor.email == 'mentor@example.com'
+        assert retrieved_link.mentee.email == 'mentee@example.com'
 
     def test_update_link(self):
         link = Link.objects.create(**self.link_data)
@@ -51,12 +53,12 @@ class LinkTests(TestCase):
         link.times = 10
         link.save()
         updated_link = Link.objects.get(id=link.id)
-        self.assertEqual(updated_link.periodicity, 'monthly')
-        self.assertEqual(updated_link.times, 10)
+        assert updated_link.periodicity == 'monthly'
+        assert updated_link.times == 10  # noqa
 
     def test_delete_link(self):
         link = Link.objects.create(**self.link_data)
         link_id = link.id
         link.delete()
-        with self.assertRaises(Link.DoesNotExist):
+        with self.pytest.raises(Link.DoesNotExist):
             Link.objects.get(id=link_id)
