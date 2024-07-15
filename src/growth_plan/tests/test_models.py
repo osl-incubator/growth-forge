@@ -57,10 +57,17 @@ class GrowthPlanItemTests(TestCase):
         assert updated_item.title == 'Updated Title'
 
     def test_delete_growth_plan_item(self):
-        growth_plan_item = GrowthPlanItem.objects.create(
-            **self.growth_plan_item_data
-        )
-        growth_plan_item_id = growth_plan_item.id
-        growth_plan_item.delete()
-        with self.pytest.raises(GrowthPlanItem.DoesNotExist):
-            GrowthPlanItem.objects.get(id=growth_plan_item_id)
+    growth_plan_item = GrowthPlanItem.objects.create(
+        **self.growth_plan_item_data
+    )
+    growth_plan_item_id = growth_plan_item.id
+    growth_plan_item.delete()
+
+    try:
+        GrowthPlanItem.objects.get(id=growth_plan_item_id)
+        item_exists = True
+    except GrowthPlanItem.DoesNotExist:
+        item_exists = False
+
+    assert not item_exists, "GrowthPlanItem should not exist after deletion"
+

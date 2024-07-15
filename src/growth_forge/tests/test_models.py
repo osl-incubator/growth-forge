@@ -54,5 +54,7 @@ class ProfileTests(TestCase):
         profile = Profile.objects.get(user=self.user)
         profile_id = profile.id
         profile.delete()
-        with self.pytest.raises(Profile.DoesNotExist):
-            Profile.objects.get(id=profile_id)
+
+        # Check that the profile does not exist
+        profile_exists = Profile.objects.filter(id=profile_id).exists()
+        assert not profile_exists, "Profile still exists after deletion"

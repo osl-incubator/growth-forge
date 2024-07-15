@@ -28,7 +28,7 @@ class ProjectTests(TestCase):
         project.observers.add(self.user1, self.user2)
         assert Project.objects.count() == 1
         assert project.name == 'Test Project'
-        assert self.user1 == project.observers.all()
+        assert self.user1 in project.observers.all()
         assert self.user2 == project.observers.all()
 
     def test_retrieve_project(self):
@@ -48,12 +48,18 @@ class ProjectTests(TestCase):
         project.save()
         updated_project = Project.objects.get(id=project.id)
         assert updated_project.name == 'Updated Project'
-        assert self.user1 == updated_project.observers.all()
+        assert self.user1 in updated_project.observers.all()
         assert self.user2 in updated_project.observers.all()
 
     def test_delete_project(self):
-        project = Project.objects.create(**self.project_data)
-        project_id = project.id
-        project.delete()
-        with self.pytest.raises(Project.DoesNotExist):
-            Project.objects.get(id=project_id)
+    project = Project.objects.create(**self.project_data)
+    project_id = project.id
+    project.delete()
+
+    try:
+        Project.objects.get(id=project_id)
+        project_exists = True
+    except Project.DoesNotExist:
+        project_exists = False
+
+    assert not project_exists, "Project should not exist after deletion"

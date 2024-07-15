@@ -57,8 +57,15 @@ class LinkTests(TestCase):
         assert updated_link.times == 10  # noqa
 
     def test_delete_link(self):
-        link = Link.objects.create(**self.link_data)
-        link_id = link.id
-        link.delete()
-        with self.pytest.raises(Link.DoesNotExist):
-            Link.objects.get(id=link_id)
+    link = Link.objects.create(**self.link_data)
+    link_id = link.id
+    link.delete()
+
+    try:
+        Link.objects.get(id=link_id)
+        link_exists = True
+    except Link.DoesNotExist:
+        link_exists = False
+
+    assert not link_exists, "Link should not exist after deletion"
+
