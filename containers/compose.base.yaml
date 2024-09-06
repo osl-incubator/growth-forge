@@ -31,9 +31,12 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-postgres-admin}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-1kdis94id}
       POSTGRES_HOST: ${POSTGRES_HOST:-growthplan-postgres}
-      POSTGRES_PORT: ${POSTGRES_HOST:-5432}
+      POSTGRES_PORT: ${POSTGRES_PORT:-45432}
+    ports:
+      - "45432:45432"
     volumes:
       - growthplandb:/var/lib/postgresql/data
+    command: postgres -p ${POSTGRES_PORT}
 
 volumes:
   growthplandb:

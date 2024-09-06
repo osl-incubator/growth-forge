@@ -2,8 +2,8 @@
 With these settings, tests run faster.
 """
 
-from .base import *  # noqa: F403
-from .base import TEMPLATES, env
+from .dev import *  # noqa: F403
+from .dev import TEMPLATES, env
 
 # GENERAL
 # -----------------------------------------------------------------------------

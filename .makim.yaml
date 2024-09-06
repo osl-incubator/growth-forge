@@ -1,7 +1,7 @@
 version: 1.0
 groups:
   clean:
-    targets:
+    tasks:
       tmp:
         help: Clean unnecessary temporary files
         shell: bash
@@ -22,7 +22,7 @@ groups:
           find . -name '*~' -exec rm -f {} +
 
   docs:
-    targets:
+    tasks:
       build:
         help: Build documentation
         run: |
@@ -31,12 +31,12 @@ groups:
       preview:
         help: Preview documentation page locally
         dependencies:
-          - target: docs.build
+          - task: docs.build
         run: |
           mkdocs build --config-file docs/mkdocs.yaml
 
   tests:
-    targets:
+    tasks:
       linter:
         help: Run linter tools
         run: |
@@ -56,26 +56,33 @@ groups:
           settings:
             help: Specify the django settings module
             type: string
-            default: ""
+            default: "config.settings.test"
           params:
             help: Specify parameters to be used for tests
             type: string
-            default: "-v 3"
+            default: "-vvv"
         shell: bash
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_USER: postgres-admin
+          POSTGRES_PASSWORD: 1kdis94id
+          POSTGRES_PORT: 45432
+          POSTGRES_DBNAME: postgres
+          ENV: dev
         run: |
-          CMD="python manage.py test --no-input {{ args.app or args.module }} \
-            --settings={{ args.settings or env.DJANGO_SETTINGS_MODULE }} {{ args.params }}"
           sugar ext start --services postgres --options -d
-          sugar run --service app --cmd $CMD
+
+          pytest ${{ args.app or args.module }} \
+            --ds=${{ args.settings or env.DJANGO_SETTINGS_MODULE }} ${{ args.params }}
 
       ci:
         help: run the sames tests executed on CI
         dependencies:
-          - target: tests.unit
-          - target: tests.linter
+          - task: tests.unit
+          - task: tests.linter
 
   package:
-    targets:
+    tasks:
       build:
         help: "Build the package"
         run: poetry build
@@ -94,18 +101,18 @@ groups:
         -p "@google/semantic-release-replace-plugin" \
         semantic-release
 
-    targets:
+    tasks:
       ci:
         help: run semantic release on CI
-        run: {{ vars.app }} --ci
+        run: ${{ vars.app }} --ci
 
       dry:
         help: run semantic release in dry-run mode
-        run: {{ vars.app }} --dry-run
+        run: ${{ vars.app }} --dry-run
 
   django:
     help: command for the django app
-    targets:
+    tasks:
       makemigrations:
         help: Run django makemigrations command (just for development)
         shell: bash
@@ -119,7 +126,7 @@ groups:
           sugar ext start --services postgres --options -d
 
           CWD=$(pwd)
-          CMD_FLAG="{{ '--check' if args.check else '' }} --no-input"
+          CMD_FLAG="${{ '--check' if args.check else '' }} --no-input"
 
           echo -e "\nMaking migration files ...\n"
           CMD="python manage.py makemigrations ${CMD_FLAG} sites growth_forge projects one_on_one growth_plan"
@@ -130,12 +137,19 @@ groups:
       migrate:
         help: Migrate regarding to the current migration files
         shell: bash
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_USER: postgres-admin
+          POSTGRES_PASSWORD: 1kdis94id
+          POSTGRES_PORT: 45432
+          POSTGRES_DBNAME: postgres
         run: |
           sugar ext start --services postgres --options -d
           echo "[II] postgres is running."
 
-          CMD="python manage.py migrate --no-input"
-          sugar run --service app --cmd $CMD
+          pushd src
+          python manage.py migrate --no-input
+          popd
 
       create-superuser:
         args:
@@ -157,8 +171,8 @@ groups:
           sugar ext start --services postgres --options -d
           echo "[II] postgres is running."
 
-          export DJANGO_SUPERUSER_PASSWORD={{ args.password }}
-          export DJANGO_SUPERUSER_USERNAME={{ args.username }}
-          CMD="python manage.py createsuperuser --noinput --email {{ args.email }}"
+          export DJANGO_SUPERUSER_PASSWORD=${{ args.password }}
+          export DJANGO_SUPERUSER_USERNAME=${{ args.username }}
+          CMD="python manage.py createsuperuser --noinput --email ${{ args.email }}"
 
           sugar run --service app --cmd $CMD --options --env DJANGO_SUPERUSER_PASSWORD=$DJANGO_SUPERUSER_PASSWORD --env DJANGO_SUPERUSER_USERNAME=$DJANGO_SUPERUSER_USERNAME
