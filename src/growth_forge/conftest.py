@@ -10,7 +10,7 @@ def _media_storage(settings, tmpdir) -> None:  # type: ignore
     settings.MEDIA_ROOT = tmpdir.strpath
 
 
-@pytest.fixture()
+@pytest.fixture
 def user(db) -> User:  # type: ignore
     ignore_vulture_issue(db)
     return UserFactory()

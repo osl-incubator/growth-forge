@@ -38,8 +38,7 @@ sentry-sdk = ">=1.40.4"  # https://github.com/getsentry/sentry-python
 django-form-surveys = ">=2.0.4"
 
 
-[tool.poetry.dev-dependencies]
-pytest = ">=8.0"
+[tool.poetry.group.dev.dependencies]
 pytest-cov = ">=4.1.0"
 pre-commit = ">=3.3.2"
 ruff = ">=0.2.2"
@@ -59,8 +58,6 @@ mkdocs-macros-plugin = ">=0.7.0,<1"
 mkdocs-material = ">=9.1.15"
 mkdocstrings = ">=0.21.2"
 mkdocstrings-python = ">=1.1.2"
-makim = "1.13.0"
-containers-sugar = "1.11.1"
 Werkzeug = {version = ">=3.0.1", extras = ["watchdog"] } # https://github.com/pallets/werkzeug
 ipdb = ">=0.13.13"  # https://github.com/gotcha/ipdb
 watchfiles = ">=0.21.0"  # https://github.com/samuelcolvin/watchfiles
@@ -73,8 +70,10 @@ factory-boy = ">=3.3.0"  # https://github.com/FactoryBoy/factory_boy
 django-debug-toolbar = ">=4.3.0"  # https://github.com/jazzband/django-debug-toolbar
 django-extensions = ">=3.2.3"  # https://github.com/django-extensions/django-extensions
 django-coverage-plugin = ">=3.1.0"  # https://github.com/nedbat/django_coverage_plugin
-pytest-django = ">=4.8.0"  # https://github.com/pytest-dev/pytest-django
-
+pytest-django = ">=4.9"  # https://github.com/pytest-dev/pytest-django
+pytest = ">=8.3"
+makim = "1.16"
+containers-sugar = "1.14.0"
 
 [tool.bandit]
 exclude_dirs = ["tests"]
@@ -126,6 +125,26 @@ plugins = [
 module = "*.migrations.*"
 ignore_errors = true
 
+[[tool.mypy.overrides]]
+module = "NewSemanalDjangoPlugin"
+ignore_errors = true
+
+# ==== djLint ====
+[[tool.mypy.overrides]]
+module = "NewSemanalDjangoPlugin"
+ignore_errors = true
+
+# ==== djLint ====
+[[tool.mypy.overrides]]
+module = "NewSemanalDjangoPlugin"
+ignore_errors = true
+
+# ==== djLint ====
+[[tool.mypy.overrides]]
+module = "NewSemanalDjangoPlugin"
+ignore_errors = true
+
+# ==== djLint ====
 [[tool.mypy.overrides]]
 module = "NewSemanalDjangoPlugin"
 ignore_errors = true

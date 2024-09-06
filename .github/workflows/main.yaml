@@ -31,7 +31,7 @@ jobs:
           conda-solver: libmamba
 
       - name: Install dependencies
-        run: poetry install --only dev
+        run: poetry install
 
       - name: build containers image
         run: sugar build
