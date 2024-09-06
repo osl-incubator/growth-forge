@@ -122,6 +122,12 @@ groups:
               Just check if the latest migration files were already created.
             type: bool
             action: store_true
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_USER: postgres-admin
+          POSTGRES_PASSWORD: 1kdis94id
+          POSTGRES_PORT: 45432
+          POSTGRES_DBNAME: postgres
         run: |
           sugar ext start --services postgres --options -d
 
@@ -129,8 +135,9 @@ groups:
           CMD_FLAG="${{ '--check' if args.check else '' }} --no-input"
 
           echo -e "\nMaking migration files ...\n"
-          CMD="python manage.py makemigrations ${CMD_FLAG} sites growth_forge projects one_on_one growth_plan"
-          sugar run --service app --cmd $CMD
+          pushd src
+          python manage.py makemigrations ${CMD_FLAG} sites growth_forge projects one_on_one growth_plan
+          popd
 
           echo "[II] postgres is running."
 
@@ -167,12 +174,19 @@ groups:
             required: True
         help: create an admin user
         shell: bash
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_USER: postgres-admin
+          POSTGRES_PASSWORD: 1kdis94id
+          POSTGRES_PORT: 45432
+          POSTGRES_DBNAME: postgres
         run: |
           sugar ext start --services postgres --options -d
           echo "[II] postgres is running."
 
           export DJANGO_SUPERUSER_PASSWORD=${{ args.password }}
           export DJANGO_SUPERUSER_USERNAME=${{ args.username }}
-          CMD="python manage.py createsuperuser --noinput --email ${{ args.email }}"
 
-          sugar run --service app --cmd $CMD --options --env DJANGO_SUPERUSER_PASSWORD=$DJANGO_SUPERUSER_PASSWORD --env DJANGO_SUPERUSER_USERNAME=$DJANGO_SUPERUSER_USERNAME
+          pushd src
+          python manage.py createsuperuser --noinput --email ${{ args.email }}
+          popd
