@@ -44,12 +44,20 @@ LOCALE_PATHS = [str(BASE_DIR / 'locale')]
 
 # DATABASES
 # ------------------------------------------------------------------------------
+
+
+POSTGRES_HOST = env('POSTGRES_HOST', default='localhost')
+POSTGRES_USER = env('POSTGRES_USER', default='postgres-admin')
+POSTGRES_PASSWORD = env('POSTGRES_PASSWORD', default='1kdis94id')
+POSTGRES_PORT = env('POSTGRES_PORT', default='45432')
+POSTGRES_DBNAME = env('POSTGRES_DBNAME', default='postgres')
+
 DATABASE_URL = (
-    f'postgres://{env("POSTGRES_USER")}:'
-    f'{env("POSTGRES_PASSWORD")}@'
-    f'{env("POSTGRES_HOST")}:'
-    f'{env("POSTGRES_PORT")}/'
-    f'{env("POSTGRES_DBNAME")}'
+    f'postgres://{POSTGRES_USER}:'
+    f'{POSTGRES_PASSWORD}@'
+    f'{POSTGRES_HOST}:'
+    f'{POSTGRES_PORT}/'
+    f'{POSTGRES_DBNAME}'
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {'default': env.db('DATABASE_URL', default=DATABASE_URL)}
