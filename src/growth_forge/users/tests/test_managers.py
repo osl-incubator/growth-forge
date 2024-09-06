@@ -7,7 +7,7 @@ from django.core.management import call_command
 from growth_forge.users.models import User
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 class TestUserManager:
     def test_create_user(self) -> None:
         user = User.objects.create_user(
@@ -38,7 +38,7 @@ class TestUserManager:
         assert user.username is None
 
 
-@pytest.mark.django_db()
+@pytest.mark.django_db
 def test_createsuperuser_command() -> None:
     """Ensure createsuperuser command works with our custom manager."""
     out = StringIO()
