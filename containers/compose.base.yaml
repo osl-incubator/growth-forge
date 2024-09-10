@@ -16,7 +16,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-postgres-admin}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-1kdis94id}
       POSTGRES_HOST: ${POSTGRES_HOST:-growthplan-postgres}
-      POSTGRES_PORT: ${POSTGRES_HOST:-5432}
+      POSTGRES_PORT: ${POSTGRES_PORT:-5432}
       POSTGRES_DBNAME: ${POSTGRES_DBNAME:-postgres}
       ENV: ${ENV:-dev}
     depends_on:
